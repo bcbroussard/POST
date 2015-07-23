@@ -1,0 +1,32 @@
+<section class="wrap no-padding">
+	{{ home_feature_gallery }}
+</section>
+{% for content_block in post.get_field('content_block') %}
+{% if content_block.acf_fc_layout == "content_with_links" %}
+<section class="wrap block-{{ loop.index }}">
+	<div class="container content-links">
+		<div class="span-7 content"> {{content_block.text}} </div>
+		<ul class="span-4 last links"> {% include 'view/content/link-list.twig' %} </ul>
+	</div>
+</section>
+{% elseif content_block.acf_fc_layout == "full_width_content" %}
+<section class="wrap seagreen block-{{ loop.index }}">
+<div class="container ">
+	<div class="span-12 full-width"> 
+		{# {{ dump(wi) }} #}
+		{% if content_block.with_logo %}
+			<img class="logo" src="{{ content_block.logo.url }}"/>
+		{% endif %}
+		<div class="text-content">{{content_block.content}}</div>
+	</div>
+</div>
+</section>
+{% endif %}
+{% endfor %}
+</div>
+</section>
+
+
+
+
+

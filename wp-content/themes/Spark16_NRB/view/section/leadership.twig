@@ -1,0 +1,43 @@
+<section class="wrap no-padding">
+	{{ home_feature_gallery }}
+</section>
+<section class="wrap">
+	<div class="container">
+	{% for leadership_group in post.get_field('leadership_group') %}
+			<h2 class="">{{leadership_group.name}}</h2>
+			{% for person in leadership_group.member  %}
+			<div 
+				class="span-4 member {% if loop.index % 3 == 0 %} last {% endif %}" 
+				data-member="{{ leadership_group.name|lower|replace({'&':'',' ':'-'}) }}-{{ person.name|lower|replace(' ', '-') }}"
+			style="background-image:url('{{ person.profile.sizes.medium }}')"> 
+			<hgroup>
+				<h3>{{person.name}}</h3>
+				<h5>{{person.title}}</h5> 
+			</hgroup>
+			</div>
+			{% endfor %}
+	{% endfor %}
+	</div>
+</section>
+
+{% for leadership_group in post.get_field('leadership_group') %}
+	{% for person in leadership_group.member  %}
+		<section class="member-modal modal {{ leadership_group.name|lower|replace({'&':'',' ':'-'}) }}-{{ person.name|lower|replace(' ', '-') }}">
+			<span class="close"></span>
+			<div class="container">	
+				<span class="thumb"><img src="{{ person.profile.url }}"/></span>
+				<div class="content" style=""> 
+					<h2>{{person.name}}</h3>
+					<h4>{{person.title}}</h4>
+					<p>{{person.bio}}</p>
+				</div>
+				<div class="pager"> 
+					{% set prev = leadership_group.member[loop.index0 - 1 ] %}
+					{% set next = leadership_group.member[loop.index0 + 1 ] %}
+					{% if prev %}<span class="prev" data-member="{{ leadership_group.name|lower|replace({'&':'',' ':'-'}) }}-{{ prev.name|lower|replace(' ', '-') }}" >{{ prev.name }}</span>{% endif %}
+					{% if next %}<span class="next" data-member="{{ leadership_group.name|lower|replace({'&':'',' ':'-'}) }}-{{ next.name|lower|replace(' ', '-') }}">{{ next.name }}</span>{% endif %}
+				</div>
+			</div>
+		</section>
+	{% endfor %}
+{% endfor %}

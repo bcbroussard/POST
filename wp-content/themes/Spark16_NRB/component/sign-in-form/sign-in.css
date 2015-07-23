@@ -1,0 +1,165 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 11, style/sass/sign-in.scss */
+.sign_on_box {
+  display: inline-block;
+  font-family: "Helvetica";
+  font-size: 12px;
+  margin: auto;
+  width: 360px;
+  height: 400px;
+  border: 1px #ccc solid;
+  border-top-width: 3px;
+  margin-top: 1em;
+}
+/* line 22, style/sass/sign-in.scss */
+.sign_on_box .form-wrap {
+  display: block;
+  box-sizing: border-box;
+  height: 400px;
+  padding: 30px 40px;
+}
+/* line 29, style/sass/sign-in.scss */
+.sign_on_box * {
+  box-sizing: border-box;
+}
+/* line 33, style/sass/sign-in.scss */
+.sign_on_box h2 {
+  margin: 1em 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* line 41, style/sass/sign-in.scss */
+.sign_on_box input[type="text"], .sign_on_box input[type="password"] {
+  padding: 5px 10px;
+  text-transform: capitalize;
+  margin-bottom: .5em;
+  width: 100%;
+}
+/* line 47, style/sass/sign-in.scss */
+.sign_on_box input[type="submit"] {
+  background: #f8f8f8;
+  width: 75px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+/* line 53, style/sass/sign-in.scss */
+.sign_on_box input[type="submit"]:hover {
+  background: #eeeeee;
+}
+/* line 58, style/sass/sign-in.scss */
+.sign_on_box input#forgot_password {
+  display: none;
+}
+/* line 63, style/sass/sign-in.scss */
+.sign_on_box .other-services {
+  width: 100%;
+  margin: 1em 0;
+  max-height: 30px;
+  overflow: hidden;
+  transition: .25s max-height ease-in-out;
+}
+/* line 70, style/sass/sign-in.scss */
+.sign_on_box .other-services li {
+  font-size: 12px;
+  display: block;
+  background: #f8f8f8;
+  border-bottom: 1px solid white;
+  overflow: hidden;
+}
+/* line 77, style/sass/sign-in.scss */
+.sign_on_box .other-services li.selected {
+  background: #ddd;
+}
+/* line 80, style/sass/sign-in.scss */
+.sign_on_box .other-services li:not(.selected) {
+  padding: 0 1em;
+}
+/* line 84, style/sass/sign-in.scss */
+.sign_on_box .other-services li span, .sign_on_box .other-services li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: .75em 1em;
+}
+/* line 92, style/sass/sign-in.scss */
+.sign_on_box .other-services:hover {
+  max-height: 5000px;
+}
+/* line 97, style/sass/sign-in.scss */
+.sign_on_box .links {
+  text-align: center;
+}
+/* line 99, style/sass/sign-in.scss */
+.sign_on_box .links a {
+  margin: 5px;
+}

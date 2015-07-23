@@ -1,0 +1,109 @@
+<section class="wrap no-padding">
+	{{ news_feature_gallery }}
+	<div class="filter filter-selector">
+		<div class="switch-container container">
+			<span class="switch span-12">View lending portfolio by sector</span>
+		</div>
+		<ul class="container">
+			<li class="span-4">
+				<h5>Sections</h5>
+				<ul class="list">
+					{% for category in categories %}
+						<li><a href="{{category.link}}">{{ category.name }}</a></li>
+					{% endfor %}
+				</ul>				
+			</li>
+			<li class="span-8 last">
+				<h5>Topics</h5>
+				<ul class="list">
+					{% for tag in tags %}
+						<li><a href="{{tag.link}}">{{ tag.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{# <li data-filter="*">View all sectors</li> #}
+			{% for term in terms %}
+			<li class="{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}"
+				data-filter=".{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}">{{ sector }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+<section class="wrap gray">
+	<div class="container">
+		<div class="span-12 section-heading">
+			<h2 class="span-7">News in Our Community</h2>
+			<a class="span-5 last view-more" href=" http://dev.nrb.local/news-in-our-community/">View more news</a>
+		</div>
+		<div class="news-preview">
+			{% for article in news %}
+				<div class="span-6 {% if loop.last %} last{% endif %}">
+					{% include 'view/content/article-preview.twig' %}
+				</div>
+			{% endfor %}
+		</div>
+
+		<h2 class="span-9 event-header">Upcoming Event</h2>
+		{% for article in events %}
+			<div class="span-12 event-feature{% if loop.last %} last{% endif %}">
+				{% include 'view/content/article-preview.twig' %}
+			</div>
+		{% endfor %}
+	</div>
+</section>
+<section class="wrap seagreen">
+	<div class="container">
+		<div class="span-12 newsletter">
+			<h4>Get the news delivered straight to your mailbox</h4>
+			{{ newsletter }}
+		</div>
+	</div>
+</section>
+<section class="wrap">
+	<div class="container">
+		<div class="span-12 content">
+			{% include "view/content/page-content.twig" %}
+		</div>
+	</div>
+</section>
+<section class="wrap">
+	<div class="container press-releases">
+		<div class="section-heading">
+			{# {{ dump(press.term) }} #}
+			<h2 class="span-8">Press Releases</h2>
+			<a class="span-4 last view-more" href="">View more press releases</a>
+		</h2>
+		<div class="span-7">
+			<ul>
+			{% for article in press.posts %}
+				<li>
+					<a href="{{ article.guid }}">
+						<h3 class="heading">{{ article.post_title }}</h3>
+						<h5 class="date">Posted {{ article.posted_date|date("m.d.Y") }}</h5>
+					</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+		<div class="span-4 contact last">
+			<h3>Media Contact</h3>
+			<span>{{ press.contact.name }}, {{ press.contact.title }}</span>
+			<span class="phone">{{ press.contact.phone }}</span>
+			<a href="mailto:{{ press.contact.email }}">Email {{ press.contact.name }}</a>
+		</div>
+	</div>
+</section>
+<section class="wrap social">
+	<div class="container">
+		<h2>Follow Us for More Updates</h2>
+		<div class="span-4">
+		</div>
+		<div class="span-4">
+			<div class="fb-page" data-href="https://www.facebook.com/pages/New-Resource-Bank/94391438470" data-height="180" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/pages/New-Resource-Bank/94391438470"><a href="https://www.facebook.com/pages/New-Resource-Bank/94391438470">New Resource Bank</a></blockquote></div></div>
+		</div>
+		<div class="span-4 last">
+			<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+			<script type="IN/CompanyProfile" data-id="47400" data-format="inline"></script>
+		</div>
+	</div>
+</section>

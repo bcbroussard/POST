@@ -1,0 +1,230 @@
+/** Page Featured Content
+	Includes all hero sections including: 
+		galleries, 
+		single slide
+		text only 
+**/
+.cycle-slideshow.gallery.page-feature{
+
+		.pager-container {
+			padding-left: 0;
+			bottom: 2.5vw;
+			display: inline-block;
+			padding-left: 35px;
+			& > span{
+				display: inline-block;
+				&:before{
+					font-family: 'FontAwesome';
+					display: inline-block;
+					color: white;
+				}
+				&#cycle-prev:before{ content: $left-nav-arrow }
+				&#cycle-next:before{ content: $right-nav-arrow }
+			}
+
+			.cycle-pager{
+				padding-left: 0;
+				display: inline-block;
+				span{
+					background: rgba(white, .5);
+					&.cycle-pager-active{
+						background: white;
+					}
+				}
+			}
+		}
+
+	@include breakpoint($mobile){
+		height:  96.9vw;
+
+		.feature-slide{
+			height: 100%;
+			&:before {
+				content: '';
+				@include bottom-gradient;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				bottom:0;
+				left: 0;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				@include bottom-gradient;
+			}
+
+			div.feature-slide-content{
+				@include span(10);
+				bottom: 0;
+				left: 0;
+				line-height: 1.2em;
+				margin: auto;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				top: 0;
+
+				.content-wrap{
+					bottom: 0;
+					height: 220px;
+					width: auto;
+					margin: auto;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+
+				}
+
+				.feature-slide-heading{
+					font-size: 26px;
+					color: $lightgreen;
+					margin-bottom: 12px;
+					line-height: 1.2em;
+				}
+
+				.feature-slide-caption{
+					@include Body;
+					color: white;
+					line-height: 1.2em;
+					margin-bottom: 16px;
+				}
+
+				.call-to-action{
+					@include button('open');
+					color: #fff;
+					text-decoration: none;
+					padding: 10px 15px;
+				}
+
+			}
+		}
+
+		.pager-container {
+			padding-left: 0;
+			.cycle-pager { padding-left: 0; }
+		}
+
+		.pager-container > span { display:none; }
+	}
+
+	@include breakpoint($desktop){
+		div.feature-slide-content{
+			left: 20px;
+			bottom: 300px;
+			position: absolute;
+		}
+
+		div.feature-slide-content{
+			width: span(8);
+			.content-wrap{
+				background: rgba($blue, .6);
+				@include box-shadow( 0px 0px 5px -1px rgba(0,0,0,0.75) );
+				@include text-shadow(rgba(black, 0.3) 1px 1px 0 );
+				padding: 25px;
+				max-width: 650px;
+				width: 80%;
+			}
+		}
+		.feature-slide-heading{
+			@include Header1;
+			color: $lightgreen;
+		}
+		.feature-slide-caption:not(:empty){
+			@include Body;
+			color: #fff;
+			margin-bottom: 15px;
+			font-size: 22px;
+			font-weight: normal;
+		}
+
+		.content div.feature-slide-content .content-wrap .call-to-action{
+			@include button('open');
+			color: #fff;
+			text-decoration: none;
+		}
+
+	}
+}
+
+body:not(.home) .five-left.feature-slide-content{
+	top: 0;
+	bottom: 0 !important;
+	height: 180px;	
+}
+
+.news .feature-slide-content{
+	position: absolute;
+	top: 0;
+	bottom: 0!important;
+	left: 0;
+	right: 0;
+	height: 220px;
+	display: block;
+	margin: auto;
+	
+	.content-wrap{
+		text-align: center;		
+	}
+
+}
+
+// .page:not(.home){
+//   display: block;
+//   top: 0;
+//   bottom: 0;
+//   position: absolute;
+//   max-height: 400px;
+// }
+
+// @media ( max-width: $mobile-breakpoint ) {
+// 	div.span-5.feature-slide-content { 
+// 		@include span( 8 at 3);
+// 		background: transparent;
+// 		bottom: 17vw !important;
+// 		.content-wrap{ width: 100%; background: none; }
+// 	} 
+// 	.span-5.feature-slide-content .feature-slide-heading{
+// 		font-size:25px;
+// 		text-align: center;
+// 	}
+// 	.span-5.feature-slide-content .feature-slide-caption{
+// 		font-size:15px;
+// 		text-align: center;
+// 	}
+// 	.gallery .cycle-slide a.call-to-action{
+// 		@include span(6 at 4);
+// 	}		
+// }
+
+
+// .feature-slide-credit{
+// 	color: #fff;
+// }
+// .content div.feature-slide-content .content-wrap .call-to-action{
+// 	@include button('open');
+// 	color: #fff;
+// 	text-decoration: none;
+// }
+
+// .feature-hero{
+	
+// }
+
+
+
+
+// .content div.feature-slide-content > .call-to-action {
+//   font-family: "Helvetica";
+//   font-size: 18px;
+//   color: #838c99;
+//   color: #fff;
+//   text-decoration: none;
+//   margin: 0;
+// }

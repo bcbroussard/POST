@@ -1,0 +1,72 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+$close: url('style/images/icon-close-white.png');
+$close-hover: url('style/images/icon-close-blue.png');
+
+.site-notice{
+	display: block;
+	position: relative;
+	width: 100%; 
+	text-align:left;
+	background: blue;
+	color: #ccc;
+	overflow: hidden;
+	opacity: 1;
+	min-height: 56px;
+	max-height: 500px;
+	transition: 500ms all linear;
+	z-index: 1012;
+
+	.container{
+		padding: 20px 0;
+		padding-right: 40%;
+		display: block;
+		min-height: 56px; 
+
+		.notice-text{
+			*{ display:inline; }
+			.heading{ margin-right: 5px; }
+			p { line-height: 1.5em; }
+		}
+	}
+
+	.close{
+		background-color: transparent;
+		background-image: $close;
+		background-size: cover;
+		bottom: auto;
+		border: none;
+		display: inline-block;
+		height: 11px;
+		outline: none;
+		padding:0;
+		position: absolute;
+		margin: auto;
+		right: 20px;
+		top: 17px;
+		width: 12px;
+		&:hover{
+			background-image: $close-hover;
+		}
+
+	}
+
+	span{
+		display: inline;
+		&.heading {
+			font-weight: bold;
+		}
+	}
+
+	&.closed {
+		max-height: 0px;
+		min-height: 0px;
+	}
+
+
+}

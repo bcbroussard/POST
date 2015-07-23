@@ -1,0 +1,71 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$container: 1365;
+// Feature Slides
+body * {
+	font-family: "Helvetica";
+	box-sizing: border-box;
+}
+h2 {
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.container{
+	max-width: #{$container}px;
+	width: 100%;
+	margin: auto;
+}
+
+
+//-- Home Gallery Slide
+.feature.slide.full{
+	display: block;
+	// padding-top: 14vw;
+	// padding-left: 8vw;
+	width: 100vw;
+	height: 40vw;
+	max-height: 550px;
+	min-height: 400px;
+	background-size: cover;
+
+
+	.container{
+		max-width: 1365px;
+		width: 100%;
+		color: white;
+		margin: auto;
+		padding-top: 50px;
+		.content{
+			text-align: center;
+			max-width: none;
+		}
+		.content {
+			max-width: 500px;
+			line-height: 2.8em;
+			margin: auto;
+			h2{
+				margin-bottom: .25em;
+			}
+			p{
+				margin-bottom: 3em;
+			}
+			a{
+				color: white; 
+				text-decoration: none;
+				border: 3px solid white;
+				padding: 10px;
+			}
+		}
+	
+		@media ( max-width: 700px ){
+			padding-top: 130px;
+			.content{
+				margin: 0 4em;
+			}
+		}
+	}
+}

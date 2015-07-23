@@ -1,0 +1,76 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 8, sass/content.scss */
+body * {
+  font-family: "Helvetica";
+  box-sizing: border-box;
+}
+
+/* line 12, sass/content.scss */
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* line 17, sass/content.scss */
+.container {
+  max-width: 1365px;
+  width: 100%;
+  margin: auto;
+}
+
+/* line 25, sass/content.scss */
+.feature.slide.full {
+  display: block;
+  width: 100vw;
+  height: 40vw;
+  max-height: 550px;
+  min-height: 400px;
+  background-size: cover;
+}
+/* line 36, sass/content.scss */
+.feature.slide.full .container {
+  max-width: 1365px;
+  width: 100%;
+  color: white;
+  margin: auto;
+  padding-top: 50px;
+}
+/* line 42, sass/content.scss */
+.feature.slide.full .container .content {
+  text-align: center;
+  max-width: none;
+}
+/* line 46, sass/content.scss */
+.feature.slide.full .container .content {
+  max-width: 500px;
+  line-height: 2.8em;
+  margin: auto;
+}
+/* line 50, sass/content.scss */
+.feature.slide.full .container .content h2 {
+  margin-bottom: .25em;
+}
+/* line 53, sass/content.scss */
+.feature.slide.full .container .content p {
+  margin-bottom: 3em;
+}
+/* line 56, sass/content.scss */
+.feature.slide.full .container .content a {
+  color: white;
+  text-decoration: none;
+  border: 3px solid white;
+  padding: 10px;
+}
+@media (max-width: 700px) {
+  /* line 36, sass/content.scss */
+  .feature.slide.full .container {
+    padding-top: 130px;
+  }
+  /* line 66, sass/content.scss */
+  .feature.slide.full .container .content {
+    margin: 0 4em;
+  }
+}

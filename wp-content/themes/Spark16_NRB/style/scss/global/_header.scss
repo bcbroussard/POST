@@ -1,0 +1,705 @@
+// Header Sign In form
+body > .header.sign_on_box{
+	background: $charcoal;
+	color: white; 
+	width: 100%;
+	max-height: 1000px;
+	margin: 0;
+	border: none; 
+	overflow: hidden;
+	transition: max-height .75s cubic-bezier(0.65, 0.05, 0.36, 1), padding .75s cubic-bezier(0.65, 0.05, 0.36, 1);
+	
+	.form-wrap{
+		padding: 40px span(2);
+	}
+
+	h2{ 
+	  display: inline-block;
+	  text-align: center;
+	  width: 100%;
+	}
+
+	&:not(.open){
+		max-height: 0;
+	}
+
+	a{
+		text-decoration: none;
+		font-style: italic;
+	}
+
+	input[type="text"], input[type="password"] {
+		border-radius: 2px;
+		border: none;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+
+	::-webkit-input-placeholder {
+		font-style: italic;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+		font-style: italic;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+		font-style: italic;  
+	}
+
+	:-ms-input-placeholder {  
+		font-style: italic;  
+	}
+
+	.user_password{
+		display: block;
+		&:after{
+			content: "?";
+			margin-left: -30px;
+			color: white;
+			display: inline-block;
+			background: $textgray;
+			padding: 4px 7px;
+			border-radius: 10px;
+		}
+	}
+
+	input[type=checkbox].nrb_checkbox {
+		position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+	}
+
+	input[type=checkbox].nrb_checkbox + label.nrb_checkbox_label {
+		padding-left:18px;
+		height:13px; 
+		display:inline-block;
+		line-height:13px;
+		background-repeat:no-repeat;
+		background-position: 0 0;
+		font-size:13px;
+		vertical-align:middle;
+		cursor:pointer;
+
+	}
+
+	input[type=checkbox].nrb_checkbox:checked + label.nrb_checkbox_label {
+		background-position: 0 -13px;
+	}
+	label.nrb_checkbox_label {
+		background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_3792b8ca36db959ab31cf48bd07291c3.png);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	button[type="submit"]{
+		@include button('fill');
+		display: inline-block;
+		margin-right: 10px;
+		i{
+			display: inline-block;
+			&:before{
+				content: $lock-icon;
+				font-family: "FontAwesome";
+				display: inline-block;
+				margin-right: 5px;
+			} 
+		}
+	}
+
+	.other-services{
+		border-radius: 2px;
+		li{
+			position: relative;
+			color: $charcoal;
+			span{
+				color: $charcoal;
+			}
+			&:after{
+				content: $down-nav-arrow;
+				font-family: "FontAwesome";
+				position: absolute;
+				right: 10px; 
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				display: block;
+				color: $charcoal;
+				height: 1em;
+			} 
+			&.selected { background: $textlightgray; }
+			&:not(.selected){
+				background: $lightgray;
+
+				a{
+					font-style: normal;
+					padding-left: 0;
+					padding-right: 0;
+				}
+				&:hover { background: #7fa3ba; a { color: white; } }
+			}
+
+		}
+		
+	}
+
+	.links{
+		@include container;
+		a{
+			margin: 0;
+			@include span(6);
+			text-align: left;
+			&:last-child{
+				text-align: right;
+				margin-right: 0;
+			}
+		}
+	}
+
+	@include breakpoint($desktop){
+		// @include modal;
+		background: rgba($paleblue, .98);
+		.close {
+			background-image: $close-gray;
+			top: 80px;
+			right: 40px;
+			margin: inherit;
+			&:hover{
+				background-image: $close-blue;
+			}
+		}
+		.form-wrap{
+			margin: 150px auto 0;
+			padding: 0;
+			width: span(6 at 4);
+			min-width: 768px;
+		}
+		h2{
+			@include Header1;
+			color: $green;
+			margin-bottom: 80px;
+		}
+		input[type="text"], input[type="password"]{
+			width: 100%;
+			border: 1px solid lightgray;
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+//Header
+header.container{
+	text-align: right;
+	z-index: 1013;
+	background: white;
+	@include breakpoint( $mobile ){
+		max-width: 100% !important;
+	}
+	@include breakpoint($desktop){
+		padding-top: 30px;
+	}	
+
+
+	.logo{
+		display: inline-block;
+		position: absolute;
+		top: 30px; 
+		left: 0;
+		@include span(3);
+		img{
+			height: auto;
+		}
+		@include breakpoint($mobile){
+			top: 0px; 
+			@include span(5.5);
+			display: none;
+		}
+	}
+
+	div.header-sub{
+		position: relative;
+		display: inline-block;
+		li {
+			display: inline-block;
+			margin-right: 15px;
+			a{ 
+				display: block;
+				font-size: 12px; 
+				text-decoration: none;
+				color: $textgray;
+				&:before{
+					font-family: "FontAwesome";
+					margin-right: 5px;
+				}
+			}
+			&.security-fraud a:before{
+				content: $lock-icon;
+			}
+			&.location-hours a:before{
+				content: $location-icon;
+			}
+			&.customer-support a:before{
+				content: $support-icon;
+			}
+			&.contact-us a:before{
+				content: $contact-icon;
+			}
+			&.sign-in-button {
+				@include button("fill");
+				display: inline-block;
+				margin-right: 0;
+				a{
+					color: white;
+					&:before{
+						content: $lock-icon;
+						font-family: "FontAwesome";
+						display: inline-block;
+						margin-right: 10px;
+					}
+				}
+			}
+
+		}
+
+		// Mobile
+		@include breakpoint($desktop){
+			@include span(10.5);
+			display: inline-block;
+			float: none; 
+			margin-right: 0;
+			padding-right: 40px;
+
+			form.slideout-search{
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				top: 0;
+				background: white;
+				height: 2.1em;
+			}
+
+			&.open form.slideout-search{
+				display: inline-flex;
+				background: white;
+				color: $textlightgray;
+				border-bottom: 1px solid $lightgray;
+				.text{ flex: 100 100; }
+				.switch, .close{
+					flex: .6;
+				}
+				.submit{
+					width: span(1);
+				}
+			}
+		}
+		@include breakpoint($mobile){
+			width: 100%;
+			height: 36px;
+			display: block;
+			background: $green;
+			top: 0;
+			left: 0;
+			white-space: nowrap;
+			overflow: hidden;
+
+			& > * {
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			nav{ display: inline-block; margin-left: 0px; transition: .5s all cubic-bezier(0.65, 0.05, 0.36, 1);  }
+			ul {
+				li{
+					&:not(.sign-in-button){
+						display: none;
+					}
+					&.sign-in-button{
+						@include button('fill');
+						display: inline-block;
+						a{
+							display: inline-block;
+							&:before{
+								content: $lock-icon;
+								margin-right: .5em;
+								font-family: "FontAwesome";
+							}	
+						}
+					}
+					&.sign-in-button.fill{
+						border-top: none;
+						border-radius: 0;
+						padding: 10px;
+					}
+					a{ color: white; text-decoration: none;}
+				}
+			}
+
+			.slider{
+				position: absolute;
+				width: 110%;
+				height: 36px;
+				right: 0;
+				background: $green;
+				display: block;
+				transition: .5s all bic-cubezier(0.65, 0.05, 0.36, 1);
+				text-align: right;
+				white-space: nowrap;
+				& > * { display:inline-block; vertical-align: top; }
+			}
+
+			&.open {
+				.slider{ 
+					width: 100%;
+					.header-sub{
+						margin-left: -95px;
+					} 
+				}
+				// nav.header-sub{
+				// 	padding: 0;
+				// 	overflow: hidden;
+				// }
+			}
+		}
+	}
+
+	form.slideout-search{
+		display: inline-block;
+		vertical-align: middle;
+	    width: 36px;
+	    height: 36px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-align: left;
+		transition: .5s all cubic-bezier(0.65, 0.05, 0.36, 1);
+		display: inline-flex;
+		background: $green;
+
+		input[type="text"]{
+			flex: 10;
+			color: $textgray;
+			@include input-placeholder {
+			    color: $textgray;
+			    font-style: italic;
+			}
+		}
+		*:not(input[type="text"]){
+			flex: 1;
+		}
+
+		& > * {
+			vertical-align: middle;
+			display: inline-block;
+			opacity: 1;
+			&:not(.switch){ 
+				opacity: 0;
+			}
+		}
+
+
+
+		.close {
+			@include button("none");
+			display: inline-block;
+		}
+
+		input[type="text"]{
+			width: 67%;
+			background: none;
+			border: none;
+			color: white;
+			padding: 5px 0;
+
+		}
+
+		::-webkit-input-placeholder {
+			color: white;
+			font-style: italic;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+			color: white;
+			font-style: italic;  
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+			color: white;
+			font-style: italic;  
+		}
+
+		:-ms-input-placeholder {  
+			color: white;
+			font-style: italic;  
+		}
+
+		input[type="submit"]{
+			background: none;
+			border: none;
+			color: $charcoal;
+			font-weight: bold;
+			font-size: 14px;
+			outline: none;
+		}
+		& > span.close{
+			background-repeat: no-repeat;
+			height: 35px;
+			width: 35px;
+			background-position: center;
+
+			@include breakpoint( $mobile ){
+				background-image: $close !Important;
+	
+			}
+
+		}
+
+		.switch{
+			@include button("none");
+			padding: 0 8px;
+			display: inline-block;
+			background-color: transparent;
+			flex: 100 0 100%;
+			vertical-align: top;
+			&:hover:before { color: $textblue; }
+			@include breakpoint($desktop){ color: $textgray; }
+			&:before{
+				@include fa-icon($search-icon);
+				position: absolute;
+				display: block;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				height: 1em;
+			}
+		}
+
+	}
+
+	.header-sub.open form.slideout-search {
+		width: span(7) + gutter();
+		background: $lightgreen;
+		.switch{
+			opacity: .5;
+			flex: 1;
+			&:before{ color: $textgray; }
+
+		}
+		.close{ 
+			background-image: $close-gray; 
+			&:hover{ background-image: $close-blue; }
+		}
+		input[type="text"]{
+			outline: none;
+			@include Body;
+			color: $blue;
+		}
+		input[type="submit"]{
+			cursor: pointer;
+			&:hover{ color: $textblue; }
+		}
+		& > *:not(.switch) { opacity: 1; }
+		@include breakpoint($mobile){
+			width: 100%;
+		}
+	}
+
+	.main-nav{
+		@include breakpoint($desktop){
+			display: block;
+			li {
+				display: inline-block;
+				margin-right: 1em;
+				position: relative;
+				border-bottom: 5px solid white;
+				@include mainNav;
+				a{
+					text-decoration: none;
+					padding: 20px 0;
+					color: $blue;
+					display: inline-block;
+				}
+				.nav-drop{
+					position: absolute;
+					top: 59px;
+					display: none;
+					text-align: left;
+					li{
+						margin-right: 0;
+						display: list-item;
+						width: 100%;
+						border-bottom: 1px solid white;
+						&:last-of-type {
+							border-bottom: none;
+						}
+						a{
+							padding: 10px;
+							width: 290px;
+							background: $lightgray;
+							display: block;
+							&:hover{
+								background: $lightgreen;
+								color: white;
+							}
+						}
+					}
+				}
+				&:hover{ 
+					& > a { color: $green; }
+					border-color: $green;
+					.nav-drop{
+						display: block;
+					}
+				}
+			}
+		}
+		@include breakpoint($mobile){
+			display: none;
+		}
+	}
+}
+
+.site-notice-open {
+	header.container #mobile-trigger{ top: 140px; }
+	@include breakpoint($mobile){
+		header.container .logo { top: 140px; }
+		#mobile-menu, #mobile-menu > nav .secondary-menu { padding-top: 180px; }
+	}
+}
+
+
+// Mobile Menu
+#mobile-trigger{
+	position: absolute;
+	top: 50px;
+	right: 30px;
+	z-index: 9999;
+	background: $green;
+	&:after{
+		content: $menu;
+		font-family: "FontAwesome"; 
+		font-size: 25px;
+		color: white;
+		display: inline-block;
+	}
+	.site-notice-open & {
+		
+	}
+}
+#mobile-menu {
+	// position: absolute;
+	top: 35px;
+	background: rgba( $green, .97 );
+	padding: 100px 40px 0;
+
+	button.back{
+		background: none;
+		padding: 0;
+		border: none;
+		&:after{
+			content: $left-nav-arrow;
+			color: white;
+			font-family: "FontAwesome";
+			font-size: 30px;
+		}
+	}
+
+	li {
+		a{
+			position: relative;
+			display: block;
+			&:after{
+				content: $right-nav-arrow;
+				font-family: "FontAwesome";
+				font-size: 22px;
+				display: block;
+				position: absolute;
+				right: 10px;
+				top: 0;
+				bottom: 0;
+				left: auto;
+				margin: auto;
+				height: 1em;
+			}
+		}
+	}
+	& > nav .secondary-menu {
+		background: $lightgreen;
+		.menu-head a, {
+			font-weight: bold;
+		}
+		.menu-head a:after{
+			content: '';
+		}
+	}
+	& > nav .tertiary-menu {
+		background: $darkgreen;
+	}
+
+	.sub-menu {
+		a { 
+			&:before{
+				font-family: "FontAwesome";
+				display: inline-block;
+				width: 2em;
+			}
+			&.security-fraud:before{
+				content: $lock-icon;
+			}
+			&.location-hours:before{
+				content: $location-icon;
+			}
+			&.customer-support:before{
+				content: $support-icon;
+			}
+			&.contact-us:before{
+				content: $contact-icon;
+			}
+		 }
+	}
+}
+
+//Site Notice
+.site-notice {
+	background: $blue;
+	color: $textlightgray;
+	min-height: 0;
+	& > .container{
+		padding: 10px 50px 10px 20px;
+		min-height: 0;
+	}
+	&.closed {
+		& > .container {
+			padding: 0;
+		}
+	}
+	.heading {
+		@include Body;
+		color: $textlightgray;
+		font-size: 10px;
+		&:before{
+			content: $alert-icon;
+			font-family: "FontAwesome";
+			margin-right: 5px;
+		}
+	}
+	p { 
+		color: $textlightgray; 
+		font-size: 10px; 
+	}
+	// .close {
+	// 	background-image: $close;
+	// 	right: 20px;
+	// 	width: 20px;
+	// 	height: 20px;
+	// }
+	@include breakpoint($desktop){
+		.heading, p { font-size: 14px; }
+		.close {
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+	}
+}

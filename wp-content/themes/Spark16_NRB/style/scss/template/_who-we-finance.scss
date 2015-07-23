@@ -1,0 +1,135 @@
+.page.who-we-finance{
+	@include with-layout($widegrid){
+		.clients {
+			@include container(100%);
+			max-width: 100%!important;
+			.client{
+				@include span(4);
+				height: 15vw;
+				position: relative;
+				background-color: $lightblue;  
+				margin-bottom: 3px;
+				margin-top: 3px;
+				background-size: 100% auto;
+				@include transition-property(background-size);
+				@include transition-duration(.25s);
+				&.wide{ @include span(8); }
+				&.tall{ height: 30.5vw; }
+
+				&:hover{
+					background-size: 120% auto;
+				}
+
+				@include breakpoint($mobile){
+					@include span(6);
+					margin-bottom: 0px;
+					height: 30vw;
+					&:nth-of-type(1), &:nth-of-type(4n){
+						@include span(12);
+					}
+					&.tall { @include span(6); height: 30vw; }
+					.client-info { 
+						position: relative;
+						height: 50% !important; 
+					}
+				}
+
+				.client-info{
+					display: block;
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+					width: 350px;
+					max-width: 90%;
+					height: 100px;
+					text-align: center;
+					h3 { color: white; }
+				}
+			}
+		}
+	}
+
+	.sector.filter-selector{
+
+		& > ul{ 
+			padding-left: 40px;
+			@include container;
+			max-width: 1180px;
+			margin: auto;
+			border: solid $lightgray;
+			border-width: 1px 0;
+		}
+		li{
+			width: 48%;
+			padding: 10px;
+			&::before{
+				content:'';
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: contain;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+		}
+		.switch { 
+			@include container;
+			max-width: 1180px;
+			margin: auto;
+			display: block;
+			border: none;
+			color: $textblue;
+			padding: 8px 0;
+		}
+	}
+
+	.client-modal{
+		display: none;
+		&.open { display: block; }
+		.close { background-image: $close; width: 18px; height: 16px; }
+		.container { 
+			padding:0; 
+			overflow: scroll; 
+			border-top-color: $green; 
+			width: 90%;
+			max-width: 720px;
+		}
+		img { width: 100%; height: auto; }
+		.modal-hero { height: 300px; position: relative; background-size: 100% auto; }
+		.modal-content { 
+			position: absolute; 
+			bottom:0; 
+			text-align: center;
+			width: 100%;
+			@include Body;
+			color: white;
+			ul { 
+				padding: 20px 80px;
+				@include container; 
+				li { 
+					display: inline-block; 
+					@include span(4);
+					&:last-child{ margin-right: 0; }
+				} 
+			} 
+		}
+		.content { 
+			padding:40px;
+			p { margin: auto; } 
+			h2,h4 { text-align: center;}
+			h2 { margin-bottom: .5em; @include Header2; color: $green; }
+			h4 { margin-bottom: span(1); color: $textgray; }
+		}
+	}
+
+	.block-2 {
+		color: white;
+		text-align: center;
+		background-color: $seagreen;
+		h2{ margin-bottom: 1em; }
+		p{ color: white; margin-bottom: 2em; }
+	}
+}

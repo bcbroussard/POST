@@ -1,0 +1,1592 @@
+/**
+	UI Component Styles
+**/
+
+/** Buttons **/
+a.button {
+	@include button("none");
+}
+
+/** Post Preview - Thumb/Excerpt Blocks **/
+@mixin preview {
+	.post-content{
+		padding: 20px 30px;
+		line-height: 1.5em;
+	}
+	h4 a { color: $textblue; }
+	h5 { color: $blue; margin-bottom: 10px; }
+
+	.thumbnail span.host-thumb {
+		width: 50px !important;
+		height: 50px;
+		@include border-radius(50px);
+		background-size: cover;
+		position: absolute;
+		right: -25px;
+		top: 20px;
+		border: 2px solid white;
+	}
+}
+@mixin article-preview{
+	.article-preview{
+		@include display-flex;
+		@include preview;
+		background: white;
+		border: 1px solid $lightgray;
+		margin-bottom: 10px;
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+
+		& > a {
+			display: flex;
+			span { 
+				display: inline-block; 
+				width: 42%; 
+			}
+		}
+		
+		.thumbnail {
+			width: 206px;
+			max-width: 100%;
+			height: 206px;
+			display: inline-block;
+			position: relative;
+			float: left;
+
+			.image {
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			&:hover{ 
+				background-size: 125%; 
+				// width: 100%;
+			}
+		}
+		.post-content {
+			padding: 20px 30px;
+			line-height: 1.5em;
+			display: inline-block;
+		}
+	}
+}
+@mixin article-feature-preview{
+	.article-feature-preview{
+		@include preview;
+		border: 1px solid $lightgray;
+		background: white;
+		.thumbnail {
+			width: 100%;
+			display: block;
+			// max-width: span(5);
+			background-size: cover;
+		}
+		.post-content{
+			padding: 10px 30px;
+			line-height: 1.5em;
+		}
+	}
+}
+
+@include article-preview;
+@include article-feature-preview;
+
+.article-feature-preview{
+	height: 446px; 
+	.thumbnail{
+		height: 240px;
+	}
+}
+
+/** Sidebar - Sidebar Styles for Post and Page Sidebars **/
+@mixin sidebar{
+	.sidebar {
+		.block {
+			margin-bottom: 70px;
+		}
+		h2 { margin-bottom: 20px; }
+		h3 { margin-bottom: 10px; }
+		.social {
+			@include social($blue);
+		}
+		.suggested-posts{
+			@include preview;
+		}
+
+		@include article-preview;
+		.block div .article-preview{
+			border: none;
+			border-bottom: 1px solid $lightgray;
+			padding-bottom: 20px;
+		}
+
+		.related-links{
+			@include column-count(2);
+			li{
+				margin-bottom: 5px; 
+				&:before { display: none; }
+			}	
+			a { @include Body; 
+				color: $textgray; 
+			}
+		}
+	}
+}
+@include sidebar;
+
+/** Breadcrumbs **/
+@mixin breadcrumb {
+	.breadcrumb{
+		position: absolute;
+		top: 10px;
+		left: 15px;
+		@include Body;
+		a {
+			color: $charcoal;
+		}
+	}
+}
+@include breadcrumb;
+
+/** Content Preview ( ie. Home Page - Owl ) **/
+.content-preview-section {
+
+	.slides{
+		li {
+			text-align: center;
+			padding: 0 50px;
+			vertical-align: top;
+			img { 
+				display: block; 
+				margin: 0 auto gutter()*2; 
+				height: 60px;
+				width: auto;
+			}
+			a {
+				display: block;
+				margin: auto;
+				margin-top: gutter();
+			}
+			h3 {
+				margin-bottom: gutter();
+				color: $charcoal;
+			}
+			span.caption, a {
+				@include Body;
+			}
+
+			a { color: $green; }
+
+			.owl-nav {
+				& > div {
+					background: black;
+					position: absolute;
+					display: block;
+					width: 10px;
+					height: 10px;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+				}
+			}
+
+		}
+	}
+}
+
+.content-pie {
+	.chart { 
+		text-align: center; 
+		height: auto; 
+		& > h3 { color: $blue; }
+		.sub-heading {
+			margin-bottom: gutter();
+			@include Body;
+			display: inline-block;
+			color: $textgray;
+			font-style: italic;
+		}
+	}
+	.doughnut-chart { margin: auto; }
+	#chartjs-tooltip {
+		span { 
+			@include Body; 
+		}
+		& > h2 { @include Header3; color: $blue; }
+		.caption { font-style: italic; color: $textgray; clear: both; display: block; line-height: 1em; }
+	}
+	@include breakpoint($mobile){
+		@include display-flex();
+		@include flex-direction(column-reverse);
+		.content { 
+			@include span(12); 
+		}
+		.chart { 
+			@include order(1); 
+			@include span(12);
+			margin-bottom: gutter();
+			padding: gutter() 0;
+			.chart-text { 
+				height: 3.5em; 
+				h2 {
+					@include Header1;
+				}
+			}
+			h4 { font-size: 16px; }
+			h6 { margin-bottom: gutter(); }
+		}
+	}
+	.content{
+
+	}
+}
+
+/** Modal **/
+@mixin modal {
+	.modal {
+		.close {
+			top: 60px;
+			bottom: auto;
+			right: 40px;
+			width: 25px;
+			height: 25px;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		&.white{
+			background: rgba(white, .75);
+			.close{
+				background-image: $close-gray;
+				&:hover{ background-image: $close-blue; }
+			}
+		}
+
+		.wp-caption {
+			@include absoluteCenter;
+			width: 50% !important;
+			height: 40vw;
+			background-color: white;
+		}
+
+	}
+}
+@include modal;
+
+	// Speedbump
+	#speedbump {
+		background: rgba($blue, .2);
+		.modal-content {
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 80%;
+			max-width: 700px;
+			height: 240px;
+			margin: auto;
+			background-color: white;
+			padding: 40px;
+			border: 1px solid $lightgray;
+			border-top: 5px solid $textblue;
+
+			@include border-radius(2px);
+
+			h3, p { margin-bottom: 20px; }
+
+			h3 {
+				color: $textblue;
+			}
+			.close{
+				background-image: $close-gray;
+				top: 20px;
+				right: 20px;
+				&:hover { background-image: $close-blue; }
+			}
+			.dismiss { border: none; background: none; color:$green; cursor: pointer; }
+			#url_link { margin-right: 2em; }
+
+
+			@include breakpoint($mobile) {
+				padding-top: 60px;
+				height: 70vh;
+
+				#url_link {
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+
+@mixin sign-in {
+
+	.sign_on_box{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		z-index: 1000;
+
+
+		@include breakpoint($mobile){
+			display: none;
+		}
+
+		h2 { margin-bottom: 35px; }
+		input[type="text"],input[type="password"]{
+			padding: 10px;
+			margin-bottom: span(1);
+			outline: none;
+		}
+		button[type="submit"]{ 
+			display: inline-block; 
+			margin-right: 1em;
+		}
+		label{ @include Body; }
+
+		ul.other-services {
+			height: 31px;
+			z-index: 1000;
+			position: relative;
+			margin-top: span(1) + gutter();
+			li.selected{
+				background: $blue;
+				span { color: white; }
+			}
+			li:not(.selected){ 
+				background: $lightblue;
+				color: $blue;
+				&:hover{
+					background: $hoverblue;
+					span { color: white; }
+				}
+			 }
+
+			 &:hover{ overflow: visible; }
+		}
+
+		.links{
+			@include container();
+			white-space: nowrap;
+			a{ 
+				width: span(6);
+				display: inline-block; 
+				&:first-child { text-align: left; margin-left: 0; }
+				&:last-child{ text-align: right; margin-right: 0;}
+			}
+		}
+
+		.wrap &{
+			right: span(1);
+			height: 365px;
+			background: rgba(white, .95);
+			border-top: 5px solid $green;
+			position: absolute;
+			margin-top: auto;
+			@include breakpoint($mobile){
+				display: none;
+			}
+		}
+
+		body > & {
+			background: $charcoal;
+			color: white; 
+			width: 100%;
+			height: 100%;
+			// max-height: 1000px;
+			margin: 0;
+			border: none; 
+			overflow: hidden;
+			transition: max-height .75s cubic-bezier(0.65, 0.05, 0.36, 1), padding .75s cubic-bezier(0.65, 0.05, 0.36, 1);
+			
+			.form-wrap{
+				padding: 40px span(2);
+			}
+
+			h2{ 
+			  display: inline-block;
+			  text-align: center;
+			  width: 100%;
+			}
+
+			&:not(.open){
+				max-height: 0;
+			}
+
+			a{
+				text-decoration: none;
+				font-style: italic;
+			}
+
+			input[type="text"], input[type="password"] {
+				border-radius: 2px;
+				border: none;
+				padding: 10px;
+				margin-bottom: 10px;
+			}
+
+			::-webkit-input-placeholder {
+				font-style: italic;
+			}
+
+			:-moz-placeholder { /* Firefox 18- */
+				font-style: italic;  
+			}
+
+			::-moz-placeholder {  /* Firefox 19+ */
+				font-style: italic;  
+			}
+
+			:-ms-input-placeholder {  
+				font-style: italic;  
+			}
+
+			.user_password{
+				display: block;
+				&:after{
+					content: "?";
+					margin-left: -30px;
+					color: white;
+					display: inline-block;
+					background: $textgray;
+					padding: 4px 7px;
+					border-radius: 10px;
+				}
+			}
+
+			input[type=checkbox].nrb_checkbox {
+				position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+			}
+
+			input[type=checkbox].nrb_checkbox + label.nrb_checkbox_label {
+				padding-left:18px;
+				height:13px; 
+				display:inline-block;
+				line-height:13px;
+				background-repeat:no-repeat;
+				background-position: 0 0;
+				font-size:13px;
+				vertical-align:middle;
+				cursor:pointer;
+
+			}
+
+			input[type=checkbox].nrb_checkbox:checked + label.nrb_checkbox_label {
+				background-position: 0 -13px;
+			}
+			label.nrb_checkbox_label {
+				background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_3792b8ca36db959ab31cf48bd07291c3.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+
+			button[type="submit"]{
+				@include button('fill');
+				display: inline-block;
+				margin-right: 10px;
+				i{
+					display: inline-block;
+					&:before{
+						content: $lock-icon;
+						font-family: "FontAwesome";
+						display: inline-block;
+						margin-right: 5px;
+					} 
+				}
+			}
+
+			.other-services{
+				border-radius: 2px;
+				li{
+					position: relative;
+					color: $charcoal;
+					span{
+						color: $charcoal;
+					}
+					&:after{
+						content: $down-nav-arrow;
+						font-family: "FontAwesome";
+						position: absolute;
+						right: 10px; 
+						top: 0;
+						bottom: 0;
+						margin: auto;
+						display: block;
+						color: $charcoal;
+						height: 1em;
+					} 
+					&.selected { background: $textlightgray; }
+					&:not(.selected){
+						background: $lightgray;
+
+						a{
+							font-style: normal;
+							padding-left: 0;
+							padding-right: 0;
+						}
+						&:hover { background: #7fa3ba; a { color: white; } }
+					}
+
+				}
+				
+			}
+
+			.links{
+				@include container;
+				a{
+					margin: 0;
+					@include span(6);
+					text-align: left;
+					&:last-child{
+						text-align: right;
+						margin-right: 0;
+					}
+				}
+			}
+
+			@include breakpoint($desktop){
+				// @include modal;
+				background: rgba($paleblue, .98);
+
+				.close {
+					background-image: $close-gray;
+					top: 60px;
+					right: 30px;
+					margin: auto;
+					width: 30px;
+					height: 30px;
+					margin: auto;
+					position: absolute;
+					background-size: contain;
+					background-repeat: no-repeat;
+					&:hover{
+						background-image: $close-blue;
+					}
+				}
+				.form-wrap{
+					margin: 150px auto 0;
+					padding: 0;
+					width: span(6 at 4);
+					min-width: 768px;
+				}
+				h2{
+					@include Header1;
+					color: $green;
+					margin-bottom: 80px;
+				}
+				input[type="text"], input[type="password"]{
+					width: 100%;
+					border: 1px solid lightgray;
+					padding: 20px;
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}
+@include sign-in;
+
+/** Post Gallery **/
+@mixin post-gallery {
+	.post-gallery {
+		.active-slide {
+			height: 50vw;
+			margin-bottom: 10px;
+			overflow: hidden;
+			background-size: cover;
+			outline: 1px solid $lightgray;
+			border: 5px solid white;
+		}
+		.slides{
+			width: 100%;
+			margin-bottom: 1em;
+			@include display-flex;
+			@include flex-wrap(wrap);
+			.thumb {
+				width: 15.83%;
+				padding-bottom: 15.83%;
+				position: relative;
+				display: inline-block;
+				margin: .5%;
+				background-size: cover;
+				
+				&:before{
+					opacity: 1;
+					content: '';
+					position: absolute;
+					background: rgba(black, 1);
+					opacity: .7;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					@include transition-property(opacity);
+					@include transition-duration(.25s);
+					@include transition-timing-function(ease-in-out);
+				}
+
+				&.active:before, &:hover:before{
+					opacity: 0;
+				}
+
+				&:nth-of-type(1), &:nth-of-type(7n){
+					margin-left: 0;
+				}
+				&:nth-of-type(6n){
+					margin-right: 0;
+				}
+				img {
+					width: 100%;
+				}
+			}
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
+	}
+}
+@include post-gallery;
+
+
+/** Gradients **/
+@mixin bottom-gradient {
+	// Needs latest Compass, add '@import "compass"' to your scss
+	// Permalink - use to edit and share this gradient:
+	// http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,0.45+100
+	// @include background-image (@include filter-gradient(#00000000, #73000000, 'vertical'); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%));
+}
+
+@mixin top-gradient {
+	// Needs latest Compass, add '@import "compass"' to your scss
+	// Permalink - use to edit and share this gradient:
+	// http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0.45+0,0+100
+	// @include filter-gradient(#73000000, #00000000, vertical); // IE6-9
+	@include background-image(linear-gradient(top,  rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%));
+}
+
+@mixin left-gradient {
+	// Needs latest Compass, add '@import "compass"' to your scss
+	// Permalink - use to edit and share this gradient:
+	// http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0.45+0,0+100
+	// @include filter-gradient(#73000000, #00000000, horizontal); // IE6-9
+	@include background-image(linear-gradient(left,  rgba(0,0,0,0.45) 0%,rgba(0,0,0,0) 100%));
+}
+
+@mixin right-gradient {
+	// Needs latest Compass, add '@import "compass"' to your scss
+	// Permalink - use to edit and share this gradient:
+	// http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,0.45+100
+	// @include filter-gradient(#00000000, #73000000, horizontal); // IE6-9
+	@include background-image(linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.45) 100%));
+}
+
+
+/** Filtering **/
+@mixin filter-selector {
+	.filter-selector{
+		position: relative;
+		max-height: 40px;
+		overflow: hidden;
+		z-index: 100;
+		border-bottom: 1px solid $lightgray;
+		border-top: 1px solid $lightgray;
+
+		@include transition-property(max-height);
+		@include transition-duration(.5s);
+		@include transition-timing-function(linear);
+
+		&.open{ 
+			max-height: 2000px;
+		}
+
+		.switch{ 
+			display: inline-block; 
+			float: none;
+			position: relative;
+			padding: 8px 20px 8px 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			@include Header5;
+			color: $charcoal;
+			&:before{
+				content: $down-nav-arrow;
+				font-family: "FontAwesome";
+				font-size: 20px;
+				margin-right: 10px;
+			} 
+
+		}
+		&.open .switch {
+			&:before {
+				content: $up-nav-arrow;
+			}
+		}
+
+		h5 { 
+			color: $charcoal; 
+			margin-bottom: 10px;
+		}
+
+		ul {
+			&.container{
+				padding-top: 15px;
+				padding-bottom: 20px;
+			}
+			margin-top: 0;
+			margin-bottom: 0;
+			
+			// @include display-flex;
+			// @include flex-direction(column-reverse);
+			li {
+				// display: inline-block;
+				@include Body;
+				color: $green;
+				cursor: pointer;
+				margin-bottom: 5px;
+				// flex: 1;
+				// &.active{ @include order(1); }
+				&:not(.active){}			
+			}
+
+		}
+
+		ol {		
+			margin-top: 0;
+			margin-bottom: 0;
+			width: span(8);
+			padding-left: 40px;
+			// @include display-flex;
+			// @include flex-direction(column-reverse);
+			li {
+				display: inline-block;
+				width: 48%;
+				padding: 10px;
+				@include Body;
+				color: $green;
+				cursor: pointer;
+				// flex: 1;
+				// &.active{ @include order(1); }
+				&:not(.active){}			
+			}
+		}		
+	}
+}
+@include filter-selector;
+
+/** Content Layouts **/
+
+//Accordion
+@mixin accordion {
+	ul.accordion-nav{
+		li { 
+			display: list-item; 
+			margin-bottom: 1em;
+		}
+	}
+
+	h2.accordion-anchor {
+		margin-bottom: 20px;
+	}
+
+	ul.accordion {
+		margin-bottom: 40px;
+		li.slide {
+			border: 1px solid $lightgray;
+			padding: 15px;
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			margin-bottom: 0;
+			&:before{ display: none; }
+			h3{
+				&:after{
+					content: '';
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					background-image: $minus;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: contain;
+					position: absolute;
+					right: 15px;
+					top: 15px;
+				}
+			}
+			&:not(.open) {
+				h3 { 
+					margin-bottom: 0;
+					&:after{
+						background-image: $plus;
+					}
+				}
+				.content { margin-bottom: 0; }
+			}
+			.content {
+				max-height: 0;
+				overflow: hidden;
+			}
+			&.open{
+				.content{
+					max-height: 2000px;
+				}
+			}
+		}
+	}
+}
+@include accordion;
+
+
+// Account Group
+div.account-group {
+	text-align: center;
+	margin-bottom: 60px;
+	display: block;
+	&:before {
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.account {
+		border: 1px solid $lightgray;
+		border-top: 5px solid $green;
+		width: 100%;
+		margin-right: 0;
+		@include border-radius(3px); 
+
+		display: inline-block;
+		float: none;
+		vertical-align: top;
+		margin-right: -5px;
+
+		border-top-color: $green;
+		h3 { color: $green; } 
+		&:nth-of-type(2n){ 
+			border-top-color: $darkgreen; 
+			h3 { color: $darkgreen; } 
+		}
+		&:nth-of-type(3n){  
+			border-top-color: $seagreen;
+			h3 { color: $seagreen; }  
+		}
+		li {
+			&:before { display: none; }
+			&:not(.heading){ border-bottom: 1px solid $lightgray; }
+			text-align: center;
+			margin: 15px;
+			height: 3em;
+			padding-bottom: 20px;
+			&.heading { 
+				height: 5em;
+				margin-top: 50px;
+				h3 { margin-bottom: 5px; }
+				span { font-style: italic; } 
+			}
+			&.monthly { min-height: 8em; height: auto; }
+			&.interest { height: 5em; }
+			&.activity { height: 8em; }
+			&.overdraft { height: 8em; }
+			&.premium { height: 8em; border-bottom: 0; }
+		}
+		@include breakpoint($mobile){
+			@include span(8 at 3);
+			clear: both;
+			margin-bottom: gutter();
+		}
+	}
+}
+
+
+// Content with Link-Sidebar
+.content-links{
+	.links {
+		@include push(1);
+		li {
+			margin-bottom: 10px;
+		}
+		a {
+			&:before {
+				display: block;
+				width: 47px;
+				height: 47px;
+				background-size: contain;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 11px;
+				background-repeat: no-repeat;
+			}
+			&.sustainability:before {
+				background-image: $sustainability;
+			}
+			&.investor-relations:before {
+				background-image: $investors;
+			}
+			&.leadership:before {
+				background-image: $board;
+			}
+			&.awards-recognition:before {
+				background-image: $awards;
+			}
+		}
+	}
+	@include breakpoint($mobile){
+		.links, .content { 
+			@include span(12); 
+			margin-bottom: span(1);
+			padding-bottom: span(1);
+		}
+		.content { border-bottom: 1px solid $lightgray; }
+	}
+}
+
+// Content Slider Gallery ( i.e. Testimonial Slider)
+.content-slider {
+	@include breakpoint($mobile){
+		margin-bottom: 40px;
+	}
+	h2,.read-more {
+		position: absolute;
+		@include container($container);
+		left: 0;
+		right: 0;
+		margin: auto;
+		z-index: 900;
+		color: white;
+		@include breakpoint($mobile){
+			@include span(10 at 2); 
+		}
+	}
+	h2 {
+		top: 60px;
+		@include text-shadow(rgba(black, 0.2) 2px 2px 0 );
+		@include breakpoint($mobile){
+			top: 40px;
+			font-size: 18px;
+			text-align: center;
+			.span-6{ width: 100%; }
+		}
+	}
+	.read-more {
+		bottom: 59px;
+		a {
+			color: white;
+			&:hover { color: $lightgreen; }
+		}
+		&:before {
+			content: '';
+			display: inline-block;
+			background-image: $who-we-finance;
+			background-size: contain;
+			width: 20px;
+			height: 20px;
+			vertical-align: middle;
+			margin-right: 8px;
+		}
+		@include breakpoint($mobile){
+			bottom: 0;
+			background: $green;
+			width: 100%;
+			padding: 10px;
+			margin: 0;
+			text-align: center;
+			a { 
+				@include container($container); 
+				margin: auto;
+			}			
+		}
+	}
+	.slide{
+
+		background-size: cover;
+		width: 100%;
+		height: 40vw;
+
+		@include breakpoint($mobile){
+			height: 73vw;
+			margin-bottom: 40px;
+		}
+
+		.content {
+			@include container($container);
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 170px; 
+			text-align: center;
+			& > * { 
+				color: white; 
+				width: span(6); 
+				@include text-shadow(rgba(black, 0.2) 2px 2px 0 );
+			}
+			@include breakpoint($mobile){
+				@include span(10 at 2); 
+				padding-top: 90px;
+				& > * { 
+					width: 100%;
+				}
+			}
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			@include left-gradient;
+		}
+	}
+	.pager-container {
+	  position: absolute;
+	  z-index: 150;
+	  bottom: 60px;
+	  right: 40px;
+	  cursor: pointer;
+		& > span{
+			vertical-align: middle;
+			display: inline-block;
+			font-size: 20px;
+			cursor: pointer;
+			&:before{
+				font-family: 'FontAwesome';
+				display: inline-block;
+				color: white;
+			}
+			&#cycle-prev:before{ content: $left-nav-arrow }
+			&#cycle-next:before{ content: $right-nav-arrow }
+		}
+
+		@include breakpoint($mobile){
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: span(6);
+			text-align: center;
+			bottom: 50px;
+			& > span{ font-size: 20px; }
+		}
+	}
+	.cycle-pager{
+		display: inline-block;
+		margin: 0 5px;
+		span{
+			font-size: 50px;
+			color: rgba(white, .5);
+			vertical-align: middle;
+			&.cycle-pager-active { color: white; }
+			@include breakpoint($mobile){
+				font-size: 30px;
+			}
+		}
+	}
+}
+
+// Full Width Content Block
+.full-width{
+	@include span(10 at 2);
+	p{
+		margin: auto;
+		width: 100%;
+		// max-width: 90%;
+	}
+	@include breakpoint($mobile){
+		p{ max-width: 100%; }
+		@include span(12);
+	}
+}
+
+// Owl Carousel
+.owl-carousel {
+	position: relative;
+	.owl-nav{
+		width: 100%;
+		i {
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 30px;
+			height: 30px;
+			&:before{
+				font-family: "FontAwesome";
+				font-size: 22px;
+				color: $textlightgray;
+			}
+			&.pager-left {
+				right: auto;
+				&:before{
+					content: $left-nav-arrow;
+				}
+			}
+			&.pager-right {
+				left: auto;
+				&:before{
+					content: $right-nav-arrow;
+				}
+			}
+		}
+	}
+}
+
+/** UI Elements **/
+.content {
+	h1,h2,p {
+		margin-bottom: 20px;
+	}
+}
+
+.content-footer {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	.span-4 {
+		@include push(2);
+	}
+	h4 { margin-bottom: 10px; }
+	.page-post-content{ padding: 0;	 }
+	.related-links{
+		@include column-count(2);
+		a { @include Body; color: $textgray; }
+	}
+	.switch-kit{
+		@include button("fill");
+		@include span(12);
+		margin-bottom: gutter()*2;
+	}
+
+	.wpcf7-form{
+		p { max-width: none; }
+		.first-name, .last-name, .email-address, .phone-number{
+			display: inline-block;
+			@include span(6);
+			input {
+				width: 100%;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+		}
+		.last-name, .phone-number {
+			margin-right: 0;
+		}
+		.your-message{
+			@include span(12);
+			textarea { width: 100%; border: 1px solid $lightgray; padding: 10px; }
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"]{
+			@include button("fill");
+		}
+
+		.other-ways {
+			float: right;
+				padding-top: 10px;
+		}
+
+
+
+	}
+
+	@include breakpoint($mobile){
+		.span-6 {
+			margin-bottom: 1em;
+			@include span(12);
+		}
+		.span-4 {
+			@include span(12);
+			margin-top: 1em;
+		}
+	}
+	// & > * { @include span(12); }
+}
+
+@include with-layout($widegrid){
+	.clients {
+		@include container(100%);
+		max-width: 100%!important;
+		.client{
+			@include span(4);
+			height: 15vw;
+			position: relative;
+			background-color: $lightblue;  
+			margin-bottom: 3px;
+			margin-top: 3px;
+			background-size: 100% auto;
+			@include transition-property(background-size);
+			@include transition-duration(.25s);
+			&.wide{ @include span(8); }
+			&.tall{ height: 30.5vw; }
+
+			&:hover{
+				background-size: 120% auto;
+			}
+
+			@include breakpoint($mobile){
+				@include span(6);
+				margin-bottom: 0px;
+				height: 30vw;
+				&:nth-of-type(1), &:nth-of-type(4n){
+					@include span(12);
+				}
+				&.tall { @include span(6); height: 30vw; }
+				.client-info { 
+					position: relative;
+					height: 50% !important; 
+				}
+			}
+
+			.client-info{
+				display: block;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				width: 350px;
+				max-width: 90%;
+				height: 100px;
+				text-align: center;
+				h3 { color: white; }
+			}
+		}
+	}
+}
+
+.solutions-list {
+	display: inline-block;
+	h2 { margin-bottom: 30px;; }
+	li {
+		display: inline-block;
+		@include Body;
+		@include span(4);
+		margin-bottom: 20px;
+		&:before {
+			height: 60px;
+			margin: 0;
+			margin-right: 1em;
+		}
+		@include breakpoint($desktop){
+			&:nth-child(3n){
+				margin-right: 0;
+			}
+		}
+		@include breakpoint($mobile){
+			text-align: center;
+			margin-left: span(1);
+			margin-bottom: 30px;
+			@include span(5);	
+			&:before {
+				display: block;
+				margin: auto;
+				margin-bottom: 10px;
+				height: 0;
+				width: 40%;
+				padding-bottom: 40%;
+			}
+
+		}
+	}
+	@include breakpoint($mobile){
+		.span-12 { 
+			@include span(10 at 2);
+			text-align: center; 
+		}
+	}
+}
+
+.content-slider {
+	@include breakpoint($mobile){
+		margin-bottom: 40px;
+	}
+	h2,.read-more {
+		position: absolute;
+		@include container($container);
+		left: 0;
+		right: 0;
+		margin: auto;
+		z-index: 900;
+		color: white;
+		@include breakpoint($mobile){
+			@include span(10 at 2); 
+		}
+	}
+	h2 {
+		top: 60px;
+		@include text-shadow(rgba(black, 0.2) 2px 2px 0 );
+		@include breakpoint($mobile){
+			top: 40px;
+			font-size: 18px;
+			text-align: center;
+		}
+	}
+	.read-more {
+		bottom: 59px;
+		a {
+			color: white;
+			&:hover { color: $lightgreen; }
+		}
+		&:before {
+			content: '';
+			display: inline-block;
+			background-image: $who-we-finance;
+			background-size: contain;
+			width: 20px;
+			height: 20px;
+			vertical-align: middle;
+			margin-right: 8px;
+		}
+		@include breakpoint($mobile){
+			bottom: 0;
+			background: $green;
+			width: 100%;
+			padding: 10px;
+			margin: 0;
+			text-align: center;
+			a { 
+				@include container($container); 
+				margin: auto;
+			}			
+		}
+	}
+	.slide{
+
+		background-size: cover;
+		width: 100%;
+		height: 40vw;
+
+		@include breakpoint($mobile){
+			height: 73vw;
+			margin-bottom: 40px;
+		}
+
+		.content {
+			@include container($container);
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 170px; 
+			text-align: center;
+			& > * { 
+				color: white; 
+				width: span(6); 
+				@include text-shadow(rgba(black, 0.2) 2px 2px 0 );
+			}
+			@include breakpoint($mobile){
+				@include span(10 at 2); 
+				padding-top: 90px;
+				& > * { 
+					width: 100%;
+				}
+			}
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			@include left-gradient;
+		}
+	}
+	.pager-container {
+	  position: absolute;
+	  z-index: 150;
+	  bottom: 60px;
+	  right: 40px;
+	  cursor: pointer;
+		& > span{
+			vertical-align: middle;
+			display: inline-block;
+			font-size: 20px;
+			cursor: pointer;
+			&:before{
+				font-family: 'FontAwesome';
+				display: inline-block;
+				color: white;
+			}
+			&#cycle-prev:before{ content: $left-nav-arrow }
+			&#cycle-next:before{ content: $right-nav-arrow }
+		}
+
+		@include breakpoint($mobile){
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: span(6);
+			text-align: center;
+			bottom: 50px;
+			& > span{ font-size: 20px; }
+		}
+	}
+	.cycle-pager{
+		display: inline-block;
+		margin: 0 5px;
+		span{
+			font-size: 50px;
+			color: rgba(white, .5);
+			vertical-align: middle;
+			&.cycle-pager-active { color: white; }
+			@include breakpoint($mobile){
+				font-size: 30px;
+			}
+		}
+	}
+}
+
+.two-column {
+	padding: 40px 0;
+}
+
+button, .button {
+	&.filled { @include button('fill'); }
+	&.open { @include button('open'); }
+}
+
+.section-heading {
+	margin-bottom: 20px;	
+}
+
+// full width with logo
+.full-width {
+	.logo {
+		display: inline-block;
+		width: span(2);
+		margin-right: span(1);
+		height: auto;
+		vertical-align: top;
+	}
+	.text-content {
+		display: inline-block;
+		width: span(8);
+		vertical-align: top;
+		color: white;
+	}
+}
+
+.content-footer {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	.span-4 {
+		@include push(2);
+	}
+	h4 { margin-bottom: 10px; }
+	.page-post-content{ padding: 0;	 }
+	.related-links{
+		@include column-count(2);
+		a { @include Body; color: $textgray; }
+	}
+	.switch-kit{
+		@include button("fill");
+		@include span(12);
+		margin-bottom: gutter()*2;
+	}
+
+	.wpcf7-form{
+		p { max-width: none; }
+		.first-name, .last-name, .email-address, .phone-number{
+			display: inline-block;
+			@include span(6);
+			input {
+				width: 100%;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+		}
+		.last-name, .phone-number {
+			margin-right: 0;
+		}
+		.your-message{
+			@include span(12);
+			textarea { width: 100%; border: 1px solid $lightgray; padding: 10px; }
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"]{
+			@include button("fill");
+		}
+
+		.other-ways {
+			float: right;
+				padding-top: 10px;
+		}
+
+
+
+	}
+
+	@include breakpoint($mobile){
+		.span-6 {
+			margin-bottom: 1em;
+		}
+		.span-4 {
+			@include span(12);
+			margin-top: 1em;
+		}
+	}
+	// & > * { @include span(12); }
+}
+
+.content-contacts {
+	.contacts {
+		@include column-count(3);
+	}
+	li {
+		list-style: none;
+		&:before { content: '' !important; }
+		@include break-inside(avoid);
+		h5 { margin-bottom: 5px; @include break-after(avoid); }
+		.description { margin-bottom: 5px; }
+		a{ display: block; }
+	}
+}
+
+.client-modal, .member-modal {
+	display: none;
+	&.open{ display: block; }
+	span.close { background-image: $close-gray; &:hover{ background-image: $close-blue; } }
+	.pager {
+		display: block;
+		position: absolute;
+		bottom: 0;
+		background: $green;
+		width: 100%;
+		@include Body;
+		color: white;
+		span {
+			display: inline-block;
+			width: 40%;
+		}
+
+		span:not(:empty) {
+			padding: 10px;
+		}
+		.next { float: right; text-align: right; &:after{ content: ' >' } }
+		.prev { float: left; &:before{ content: '< ' } }
+	}
+}
+	

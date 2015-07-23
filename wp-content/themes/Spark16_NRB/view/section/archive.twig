@@ -1,0 +1,54 @@
+<section class="hero post-hero wrap no-padding">
+	<div class="background"></div>
+	<div class="container">
+		<div class="breadcrumb"><a class="" href="{{ news.guid }}">News in Our Community > {{ term.name }}</a></div>
+		<div class="post-heading">
+			<h1>{{ term.name }}</h1>
+			<p>{{ term.description }}</p>
+		</div>
+	</div>
+</section>
+<section class="wrap no-padding">
+	<div class="filter filter-selector">
+		<div class="switch-container container">
+			<span class="switch span-12">View posts on another topic</span>
+		</div>
+		<ul class="container">
+			<li class="span-4">
+				<h5>Sections</h5>
+				<ul class="list">
+					{% for category in categories %}
+						<li><a href="{{ site.url}}/category/{{category.slug}}">{{ category.name }}</a></li>
+					{% endfor %}
+				</ul>				
+			</li>
+			<li class="span-8 last">
+				<h5>Topics</h5>
+				<ul class="list">
+					{% for tag in tags %}
+						<li><a href="{{ site.url}}/tag/{{tag.slug}}">{{ tag.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			{# <li data-filter="*">View all sectors</li> #}
+			{% for term in terms %}
+			<li class="{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}"
+				data-filter=".{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}">{{ sector }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+<section class="wrap gray">
+	<ul class="container archive-feed">
+		{% for article in featured %}
+			<li class="span-12">
+				{% include 'view/content/article-feature-preview.twig' %}
+			</li>
+		{% endfor %}
+		{% for article in blog %}
+			<li class="span-6 {% if loop.index % 2 == 0 %} last{% endif %}">
+				{% include 'view/content/article-preview.twig' %}
+			</li>
+		{% endfor %}
+	</ul>
+</section>

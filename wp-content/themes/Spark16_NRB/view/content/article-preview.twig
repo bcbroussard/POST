@@ -1,0 +1,21 @@
+<div class="article-preview preview">
+	<span class="thumbnail">
+		<a href="{{ article.guid }}">
+		<span class="image" style="background-image: url({{ TimberPost(article).thumbnail.url }});"></span>
+
+		{% if TimberPost(article).get_field('host') %}
+		{% for host in TimberPost(article).get_field('host') %}
+			<span class="host-thumb" style="background-image: url('{{ host.thumbnail.url }}');"></span>
+		{% endfor %}
+		{% endif %}
+		</a>
+	</span>
+	<div class="post-content span-7 last">
+		<h4><a href="{{ article.guid }}">{{article.post_title}}</a></h4>
+		<h5>Posted {{article.posted_date|date("m.d.Y")}}</h5>
+		<p>{{article.get_preview(20, false, '')}}</p>
+		{% if article.rsvp_link %}
+			<a class="rsvp button fixed" href="{{ article.rsvp_link }}">RSVP</a>
+		{% endif %}
+	</div>
+</div>

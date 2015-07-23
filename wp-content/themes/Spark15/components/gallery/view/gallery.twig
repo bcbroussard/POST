@@ -1,0 +1,27 @@
+{# {% if slides|length > 1 %} #}
+ <ul 
+	class="cycle-slideshow gallery {{ spark_class }}"
+	data-cycle-fx="scrollHorz"
+	data-cycle-slides="> li"
+	data-cycle-timeout="0"
+	data-cycle-pager=".pager-container .cycle-pager"
+	data-cycle-next=".pager-container #cycle-next"
+	data-cycle-prev=".pager-container #cycle-prev"
+	data-count = "{{ slides|length }}"
+ >
+	{% for slide in slides %}
+		{% include slide_template %}
+	{% endfor %}
+	{% if slides|length > 1 %}
+	    <div class="pager-container">
+	    	<span id="cycle-prev"></span>
+	    	<div class="cycle-pager"></div>
+	    	<span id="cycle-next"></span>
+	    </div>
+	{% endif %}
+</ul>
+{# {% else %}
+	{% for slide in slides %}
+	    {% include slide_template %}
+	{% endfor %} #}
+{# {% endif %} #}

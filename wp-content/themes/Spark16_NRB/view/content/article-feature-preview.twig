@@ -1,0 +1,8 @@
+<div class="article-feature-preview preview">
+	<a class="thumbnail" href="{{ article.guid }}" style="background-image: url('{{ article.thumbnail.src }}')"></a>
+	<div class="post-content">
+		<h4><a href="{{ article.guid }}">{{article.post_title}}</a></h4>
+		<h5>Posted {{article.posted_date|date("m.d.Y")}}</h5>
+		<p>{{article.get_preview(40, false, '')}}</p>
+	</div>
+</div>

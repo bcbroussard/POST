@@ -1,0 +1,36 @@
+//Typography
+body {
+	@include Body;
+
+	p { @include Paragraph; }
+	h1{ @include Header1; }
+	h2{ @include Header2; }
+	h3{ @include Header3; }
+	h4{ @include Header4; }
+	h5{ @include Header5; }
+	h6{ @include Header6; }
+	blockquote { @include Quote; }
+}
+a { 
+	&:link, &:visited { 
+		text-decoration: none;  
+		color: $green;
+	}
+}
+
+//Section Backgrounds
+.wrap {
+	&:not(.no-padding){
+		padding: 40px 0;
+	}
+	&.white {
+		background: white;
+	}
+	&.seagreen {
+		background: $seagreen;
+	}	
+	&.lightgray, &.gray {
+		background: $backgroundgray;
+		border-top: 1px solid $lightgray;
+	}
+}

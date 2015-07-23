@@ -1,0 +1,34 @@
+<div class="sign_on_box header business span-9">
+	<span class="close"></span>
+	<div class="form-wrap">
+		<h2>Sign In to Online Banking</h2>
+		<!--form action="https://secure53.onlineaccess1.com/NewResourceOnline_30/Authentication/Login.aspx" method="post" id="Q2OnlineLogin" name="Q2OnlineLogin" autocomplete="off"-->
+		<form action="https://onlinebanking.newresourcebank.com/newresourceonline_30/Authentication/Login.aspx" method="post" id="Q2OnlineLogin" name="Q2OnlineLogin" autocomplete="off">
+			<span class="user_id"><input type="text" name="user_id" id="q2oLoginID" placeholder="user ID" onfocus="clearPlaceholder(this,'user ID')" onblur="setPlaceholder(this,'user ID')" /></span>
+			<span class="user_password"><input type="password" name="password" placeholder="password" class="text" id="pwdtext" autocomplete="off"  /></span>
+			<button class="fill" value="Sign in" type="submit" name="submit"><i></i>Submit</button>
+
+			<input type="checkbox" class="nrb_checkbox" name="first_time" id="first_time" value="1"/><label for="first_time" class="nrb_checkbox_label">First-time user</label>
+			<br />
+			<input type="checkbox" name="forgot_password" id="forgot_password" value="1" />
+		</form>
+		
+		<ul class="other-services">
+			<li class="selected disabled"><span>Sign In to Other Services</span></li>
+			<li class="">
+				<a href="https://estmtgd.fidelityifs.com/830003PositivePay/Welcome.aspx?ReturnUrl=%2f830003PositivePay%2fhome.aspx">Positive Pay</a>
+			</li>
+			<li class="">
+				<a href="https://xpress.epaysol.com/ct/?bid=110114098">Remote Deposit Capture</a>
+			</li>
+			<li class="">
+				<a href="https://www.myaccountaccess.com/onlineCard/login.do?theme=elan1&amp;loc=21984">Credit Cards</a>
+			</li>
+		</ul>
+		<!--<div style="clear:both;padding:0 0 5px 0"></div>-->
+		<div class="links">
+			<a href="https://onlinebanking.newresourcebank.com/NewResourceEnrollment/AutoEnrollment.html">Enroll in online banking</a>
+			<a href="/content/security-and-fraud">More about our security</a>
+		</div>
+	</div>
+</div>

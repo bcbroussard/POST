@@ -1,0 +1,4 @@
+{% for link in content_block.link_list %}	
+	<li><a href="{{link.page.guid}}" 
+		class="{{ link.page.post_name }}{% if link.icon_class %} icon {{link.icon_class}} {% endif %}">{{link.page.post_title}} </a></li>
+{% endfor %}

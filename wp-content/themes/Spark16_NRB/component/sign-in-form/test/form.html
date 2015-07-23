@@ -1,0 +1,28 @@
+<div class="sign_on_box business">
+	<h2>online banking</h2>
+	<!--form action="https://secure53.onlineaccess1.com/NewResourceOnline_30/Authentication/Login.aspx" method="post" id="Q2OnlineLogin" name="Q2OnlineLogin" autocomplete="off"-->
+	<form action="https://onlinebanking.newresourcebank.com/newresourceonline_30/Authentication/Login.aspx" method="post" id="Q2OnlineLogin" name="Q2OnlineLogin" autocomplete="off">
+		<input type="text" name="user_id" class="text" id="q2oLoginID" placeholder="user ID" onfocus="clearPlaceholder(this,'user ID')" onblur="setPlaceholder(this,'user ID')" />
+		<input type="password" name="password" placeholder="password" class="text" id="pwdtext" autocomplete="off"  />
+
+		<div style="float:left;width:100px">
+			<input type="checkbox" name="forgot_password" id="forgot_password" onClick="CheckBoxCheck(0);" value="1"/><span class="x_small_text">first time user</span><br />
+			<input type="checkbox" name="forgot_password" id="forgot_password" onClick="CheckBoxCheck(1);" value="1" /><span class="x_small_text">forgot password</span><br />
+		</div>
+		<div style="width:54px;float:left">
+			<input value="Login" class="image" name="submit" type="image" src="<?php print $GLOBALS['base_url'] . "/" . $directory; ?>/images/button_sign_on.png" />
+		</div>
+	</form>
+	<div style="clear:both"></div>
+	<h2>other services</h2>
+	<form>
+		<select onchange="var gotoValue = this.value; window.open(gotoValue); $('.jquery-selectbox-currentItem a').text('select service'); ">
+			<option value="https://estmtgd.fidelityifs.com/830003PositivePay/Welcome.aspx?ReturnUrl=%2f830003PositivePay%2fhome.aspx">positive pay</option>
+			<option value="https://xpress.epaysol.com/ct/?bid=110114098">remote deposit capture</option>
+			<option value="https://www.myaccountaccess.com/onlineCard/login.do?theme=elan1&amp;loc=21984">credit cards</option>
+		</select>
+	</form>
+	<!--<div style="clear:both;padding:0 0 5px 0"></div>-->
+	<div style="clear:both"><a href="https://onlinebanking.newresourcebank.com/NewResourceEnrollment/AutoEnrollment.html"><span class="x_small_text">Enroll now</span><br /></a></div>
+	<div style="clear:both"><a href="/content/security-and-fraud"><span class="x_small_text">Learn about our security</span></a></div>
+</div>

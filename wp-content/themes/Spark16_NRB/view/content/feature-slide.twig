@@ -1,0 +1,29 @@
+<li class="cycle-slide feature-slide" style="background-image:url({{ slide.image.sizes.large }})">
+    <div class="content container">
+        <div class="span-5 five-left  feature-slide-content">
+        	<div class="content-wrap">
+        		{% if slide.icon %}<span class="icon"><img src="{{ slide.icon.url }}"/></span>{% endif %}
+				<h2 class="feature-slide-heading">
+					{% if slide.heading %}{{ slide.heading }}
+					{% else %} {{ post.title }} {% endif %}
+				</h2>
+				{% 	if slide.subheading or post.headline %}
+				<h3 class="feature-slide-caption">
+					{% 	if slide.subheading %}{{ slide.subheading }}{% 
+						elseif post.headline %}{{ post.headline[0] }}{% 
+						endif %}
+				</h3>
+				{% endif %}
+				{% if slide.call_to_action_text %}
+		            <a 	class="call-to-action" 
+						href="{% 
+						if slide.call_to_action_url %} {{ slide.call_to_action_url }}{%
+						elseif slide.call_to_action_external %}{{ slide.call_to_action_external }}{%
+						endif  %}"
+						{% if slide.open_in_new_tab[0] == 'new' %}target="_blank"{% endif %}>{{ slide.call_to_action_text }}</a>
+		        {% endif %}
+		    </div>
+            <span class="feature-slide-credit">{{ slide.credit }}</span>
+        </div>
+    </div>
+</li>

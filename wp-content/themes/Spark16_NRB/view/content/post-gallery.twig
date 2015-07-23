@@ -1,0 +1,10 @@
+<section class="post-gallery {{ spark_class }}">
+	<h2 class="section-heading">{{ header }}</h2>
+	<div class="current-container"></div>
+	<ul class="slides container">
+	{% for slide in feed %} 
+		{% include slide_template %}
+	{% endfor %}
+	</ul>
+	
+</section>

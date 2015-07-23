@@ -1,0 +1,199 @@
+{% for content_block in post.get_field('content_block') %}
+	{% if content_block.acf_fc_layout == "content_with_links" %}
+		<div class="content-links {{ content_block.background_color }}">
+			<div class="span-7 content"> {{content_block.text}} </div>
+			<ul class="span-5 last links"> {% include 'view/content/link-list.twig' %} </ul>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "2_column_content" %}
+		<div class="two-column container {{ content_block.background_color }}">
+			<div class="span-6 column"> {{content_block.column_1}} </div>
+			<div class="span-6 column last"> {{content_block.column_2}} </div>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "full_width_content" %}
+		<div class="{{ content_block.background_color }}"> 
+			<div class="span-12 full-width"> 
+				{% if with_logo %}
+					<img class="logo" src="{{ content_block.logo.src }}"/>
+				{% endif %}
+				<div class="text-content">{{content_block.content}}</div>
+			</div>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "content" %}
+		<div class="{{ content_block.background_color }}"> 
+			<div class="span-12"> {{content_block.content}} </div>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "content_with_pie" %}
+		<div class="content-pie {{ content_block.background_color }}">
+			<div class="span-7 content"> {{content_block.text}} </div>
+			<div class="span-5 last "></div>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "content_slider" %}
+		<div class="{{ content_block.background_color }}">
+			<ul 
+			class="cycle-slideshow content-slider"
+			data-cycle-fx="scrollHorz"
+			data-cycle-slides="> li"
+			data-cycle-timeout="0"
+			data-cycle-pager=".pager-container .cycle-pager"
+			data-cycle-next=".pager-container #cycle-next"
+			data-cycle-prev=".pager-container #cycle-prev"
+			data-count = "{{ slides|length }}"
+			>
+			<h2><span class="span-6">{{ content_block.heading }}</span></h2>
+			<span class="read-more"> <a href="{{ content_block.read_more_link.guid }}">Read more from who we finance</a></span>
+			{% for slide in content_block.slides %}
+				{% if loop.length > 1 %}
+				<li class="slide"
+					style="background-image:url({{ slide.photo.url }})">
+					<div class="content">
+						{% if slide.heading %}<h3>{{ slide.heading }}</h3>{% endif %}
+						<p>{{ slide.content }}</p>
+					</div>
+				</li>
+				{% else %}
+				<div class="image-slide">
+					<img src="{{ slide.photo.url }}"/>
+					<div class="content">
+						<p class="caption">{{ slide.content }}</p>
+					</div>
+				</div>							
+				{% endif %}
+			{% endfor %}
+			{% if content_block.slides|length > 1 %}
+			    <div class="pager-container">
+			    	<span id="cycle-prev"></span>
+			    	<div class="cycle-pager"></div>
+			    	<span id="cycle-next"></span>
+			    </div>
+			{% endif %}
+			</ul>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "list_list" %}
+		<div class="{{ content_block.background_color }}" 
+		style="background-image:url({{ content_block.background.url }}">
+			<div class="links">
+			</div>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "accordion" %}
+		<div class="container" 
+		style="background-image:url({{ content_block.background.url }}">
+			<h2 id="{{ content_block.heading|raw|lower|replace({' ':'-'}) }}" class="accordion-anchor">{{ content_block.heading }}</h2>
+			<ul class="accordion">
+				{% for slide in content_block.slide %}
+					<li class="slide">
+						<h3>{{ slide.heading }}</h3>
+						<div class="content">
+							{{ slide.content }}
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	{% elseif content_block.acf_fc_layout == "external_link_with_excerpt" %}
+		<div class="external-links {{ content_block.background_color }} {{ content_block.type|raw|lower|replace({' ':'-'}) }}" 
+			 style="background-image:url({{ content_block.background.url }});">
+
+			<h2 id="{{ content_block.heading|raw|lower|replace({' ':'-'}) }}">{{ content_block.heading }}</h2>
+			<ul class="external">
+				{% for slide in content_block.link %}
+					<li class="{% if slide.logo %}w-logo{% endif %}">
+						{% if slide.logo %}
+							<div class="logo"><img src="{{ slide.logo.url }}"/></div>
+						{% endif %}
+						<div class="content">
+							<h3>{{ slide.heading }}</h3>
+							<p>
+								{{ slide.excerpt }}
+							</p>
+							<a href="{{ slide.link }}">Visit {{ slide.link_label }}</a>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	
+	{% elseif content_block.acf_fc_layout == "account_groups" %}
+		{# {{ dump(content_block) }} #}
+		<div class="account-group">
+			<img src="{{ content_block.icon.url }}"/>
+			<h2>{{ content_block.heading }}</h2>
+			<div class="accounts">
+			{% for account in content_block.account %}
+				<ul class="span-4 account {% 
+					if loop.last %}last{% endif %}">
+					<li class="heading">
+						<h3>{{ account.name }}</h3>
+						<span class="caption">{{ account.description }}</span>
+					</li>
+					<li class="monthly">
+						<h4>Monthly Service Charge</h4>
+						<span>{{ account.monthly_service }}</span>
+					</li>
+					<li class="interest">
+						<h4>Interest</h4>
+						<span>{{ account.interest }}</span>
+					</li>
+					<li class="activity">
+						<h4>Activity</h4>
+						<span>{{ account.activity }}</span>
+					</li>
+					<li class="overdraft">
+						<h4>Overdraft Protection</h4>
+						<span>{{ account.overdraft_protection }}</span>
+					</li>
+					<li class="premium">
+						<h4>Premium Services</h4>
+						<span>{{ account.premium_services }}</span>
+					</li>
+				</ul>
+			{% endfor %}
+			</div>
+		</div>
+	
+	{% elseif content_block.acf_fc_layout == "location_map" %}
+	<div class=" span-4 content">
+		{{ content_block.content }}
+	</div>
+	<div class="span-8 last">
+		<div id="map" style="width: 100%; height: 350px;"></div>
+			<script src='http://maps.googleapis.com/maps/api/js?sensor=false' type='text/javascript'></script>
+
+			<script type="text/javascript">
+				//<![CDATA[
+				function load() {
+				  	var lat = {{ content_block.map.lat }};
+				  	var lng = {{ content_block.map.lng }};
+				// coordinates to latLng
+				var latlng = new google.maps.LatLng(lat, lng);
+				// map Options
+				var myOptions = {
+					zoom: 14,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				//draw a map
+				var map = new google.maps.Map(document.getElementById("map"), myOptions);
+				var marker = new google.maps.Marker({
+					position: map.getCenter(),
+					map: map
+				});
+			}
+				// call the function
+				load();
+				//]]>
+			</script>
+		</div>
+	{% elseif content_block.acf_fc_layout == "full_contact_form" %}
+		<div class="span-12 full-contact-form contact-form">
+			<div class="form-container">{{ content_block.contact_form }}</div>
+		</div>
+	{% endif %}
+{% endfor %}

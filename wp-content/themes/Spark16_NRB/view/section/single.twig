@@ -1,0 +1,164 @@
+<section class="post-content wrap no-padding">
+	<div class="container">
+		<div class="content span-8">
+			<div class="breadcrumb"><a class="back-to" href="{{ news.guid }}">View All News</a></div>
+			<div class="post-heading">
+				<h5 class="posted-date">Posted {{ post.date }}</h5>
+				<h1>{{ post.title }}</h1>
+				<span class="subheadline">{{ post.headline }}</span>
+			</div>
+			{{ post.content }}
+			<div class="terms">
+				<b>Posted In:</b> {% for term in post.terms %} <a href="{{term.link}}"> {{ term.name }}</a>{% if not loop.last %},{% endif %}{% endfor %}
+			</div>
+			<div id="comments" class="comments-area">
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+				    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+				    var disqus_shortname = '<example>'; // Required - Replace example with your forum shortname
+
+				    /* * * DON'T EDIT BELOW THIS LINE * * */
+				    (function() {
+				        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				    })();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</div>
+		<div class="span-4 sidebar last">
+			<div class="block">
+				<h3 class="social-header">Share This Post</h3>
+				<span class="social">
+					<a class="facebook" href="http://www.facebook.com/share.php?u={{ post.guid }}&title={{ post.title }}" target="_blank"></a>
+					<a class="twitter" href="http://twitter.com/intent/tweet?status={{ post.title }}+{{ post.guid }}" target="_blank"></a>
+					<a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ post.guid }}&title={{ post.title }}" target="_blank"></a>
+				</span>	
+			</div>
+			<div class="block">
+				<h3>What to Read Next</h3>	
+				<div class="suggested-posts">
+					{% for article in post.get_field('suggested') %}
+						{% include 'view/content/article-preview.twig' %}
+					{% endfor %}
+				</div>	
+			</div>	
+		</div>
+	</div>
+</section>
+{# {% if post.type == "Client" %}
+<section class="wrap no-padding">
+	<div class="page-post-content">
+		{% include "view/content/page-content.twig" %}
+	</div>
+</section>
+<section class="wrap gray">
+	<div class="container content-footer">
+		<div class="span-8">{{ post.footer_content }}</div>
+		<div class="span-4 last">
+			<a class="switch-kit fill">Get Our Switch Kit (PDF)</a>
+			<h4>Related Links</h4>
+			<ul class="related-links">
+			{% for link in post.get_field('related_links') %}
+				<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% elseif post.type == "Product" %}
+<section class="wrap no-padding">
+	<div class="container">
+		<div class="page-post-content span-12">
+			{% include "view/content/page-content.twig" %}
+		</div>
+		<div class="container content-footer">
+			<div class="span-8">{{ post.footer_content }}</div>
+			<div class="span-4 last">
+				<ul class="related-links">
+				{% for link in post.get_field('related_links') %}
+					<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% elseif post.type == "Resource" %}
+<section class="wrap no-padding">
+	<div class="container">
+		<div class="page-post-content span-12">
+			{% include "view/content/page-content.twig" %}
+		</div>
+		<div class="container content-footer">
+			<div class="span-8">{{ post.footer_content }}</div>
+			<div class="span-4 last">
+				<ul class="related-links">
+				{% for link in post.get_field('related_links') %}
+					<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% else %}
+<section class="wrap no-padding">
+	<div class="container">
+		<div class="page-post-content span-12">
+			<div class="span-8">{% include "view/content/page-content.twig" %}</div>
+			<div class="span-4 last">
+				{% if post.get_field('related_links') %}
+					<ul class="related-links">
+						<h3>Related Links</h3>
+					{% for link in post.get_field('related_links') %}
+						<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+			</div>			
+		</div>
+	</div>
+</section>
+{% endif %} #}
+<section class="wrap lightgray bottom-content">
+	<div class="container">
+		<div class="span-8">
+			<h2>Find More Posts</h2>
+			<div class="categories">
+				<ul class="container">
+					<li class="span-6">
+						<h5>Sections</h5>
+						<ul class="list">
+							{% for category in categories %}
+								<li><a href="{{ site.url}}/category/{{category.slug}}">{{ category.name }}</a></li>
+							{% endfor %}
+						</ul>				
+					</li>
+					<li class="span-6 last">
+						<h5>Topics</h5>
+						<ul class="list">
+							{% for tag in tags %}
+								<li><a href="{{ site.url}}/tag/{{tag.slug}}">{{ tag.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+					{# <li data-filter="*">View all sectors</li> #}
+					{% for term in terms %}
+						<li class="{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}"
+						data-filter=".{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}">{{ sector }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="span-4 last">
+			<h2>Learn More About Us</h2>
+		</div>
+	</div>
+</section>
+
+

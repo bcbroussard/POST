@@ -1,0 +1,10 @@
+{# {{ dump(content) }} #}
+<section class="wrap {{ classes }}" style="background:url({{ content[0].background.url }})">
+	<div class="container">
+		<div class="span-8"></div>
+		<ul class="span-4">
+	{% for link in content[0].links %}	
+		<li><a href="{{link.page.guid}}" class="icon {{link.icon_class}}">{{link.page.post_title}} </a></li>
+	{% endfor %}
+	</div>
+</section>

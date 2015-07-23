@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  {{ language_attributes }} class="no-js">
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="{{ bloginfo( 'pingback_url' ) }}">
+	<!--[if lt IE 9]>
+	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(){document.documentElement.className='js'})();</script>
+	{{ wp_head }}
+</head>
+<body class="{{ body_class }} {{ post.post_name }}" >
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=218443678167774";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	{{ sign_in_form }}
+	<div class="site-wrapper">
+		<header class="container">
+			<a href="{{ site.url }}" class="logo span-4">
+				<img class="desktop" src="{{ site_logo.desktop.url }}"/>
+				<img class="mobile" src="{{ site_logo.mobile.url }}"/>
+			</a>
+			<div class="header-sub span-8">
+				<div class="slider">
+					{{ sub_nav }}
+					{{ search }}
+				</div>
+			</div>
+			{{ main_nav }}
+			<a href="#" id="mobile-trigger" class="menu-trigger"></a>
+		</header>
+		{{ mobile_nav }}
+		{{ site_notice }}

@@ -1,0 +1,58 @@
+<div id="slideshow-1" class="{{ spark_class }}">
+    <p>
+        <a href="#" class="cycle-prev">« prev</a> | <a href="#" class="cycle-next">next »</a>
+    </p>
+    <div 	id="cycle-1" 
+    		class="cycle-slideshow" 
+    		data-cycle-slides="> div" 
+    		data-cycle-timeout="0" 
+    		data-cycle-prev="#slideshow-1 .cycle-prev" 
+    		data-cycle-next="#slideshow-1 .cycle-next"  
+    		style="position: relative;">
+
+    	{% for slide in feed %}
+    	<div class="cycle-slide">
+    		<img src="{{ slide. }}"/>
+    	</div>
+    	{% endfor %}    
+</div>
+
+<div id="slideshow-2" class="{{ spark_class }}">
+    <div 	id="cycle-2" 
+    		class="cycle-slideshow" 
+    		data-cycle-slides="> div" 
+    		data-cycle-timeout="0" 
+    		data-cycle-prev="#slideshow-2 .cycle-prev" 
+    		data-cycle-next="#slideshow-2 .cycle-next" 
+    		data-cycle-caption="#slideshow-2 .custom-caption" 
+    		data-cycle-fx="carousel" 
+    		data-cycle-carousel-visible="5" 
+    		data-cycle-carousel-fluid="true" 
+    		data-allow-wrap="false" 
+    		style="position: relative; overflow: hidden;">
+
+
+    	<div class="cycle-slide">
+    		<img src="http://malsup.github.io/images/beach1.jpg" width="100" height="100">
+    	</div> 
+        
+    </div>
+</div>
+
+<script>
+
+	jQuery(document).ready(function($){
+
+		var slideshows = $('.cycle-slideshow').on('cycle-next cycle-prev', function(e, opts) {
+		    // advance the other slideshow
+		    slideshows.not(this).cycle('goto', opts.currSlide);
+		});
+
+		$('#cycle-2 .cycle-slide').click(function(){
+		    var index = $('#cycle-2').data('cycle.API').getSlideIndex(this);
+		    slideshows.cycle('goto', index);
+		});
+
+	});
+
+</script>

@@ -1,0 +1,479 @@
+// Base Styles
+
+.wp-caption { 
+	border: 1px solid $lightgray; 
+	margin: 2em 0; 
+	padding: 10px; 
+	img { 
+		max-width: 100%; 
+		width: 100%;
+		height: auto;
+	}
+}
+
+.external-links {
+	li {
+		padding-bottom: 20px; 
+		border-bottom: 1px solid $lightgray;
+		&:before { 
+			display: none !important; 
+			content: '';
+		}
+		.content {
+			margin-bottom: 1em;
+		}
+		
+		&.w-logo {
+			@include display-flex;
+			@include box-sizing(border-box);
+			height: 213px;
+			margin-bottom: 40px;
+			.logo { 
+				width: 130px;
+				margin-right: 20px;
+				img  { 
+					width: auto; 
+					height: auto; 
+					max-height: 60%;
+					max-width: 80%;
+				}
+			}
+			.content { 
+				@include flex(1); 
+				h3{ margin-bottom: 10px; }
+				p { margin-bottom: 10px; }
+			}
+		}
+	}
+
+	&.hover-tile {
+		li {
+			@include span(4);
+			position: relative;
+			border: 1px solid $lightgray;
+			padding-bottom: 0;
+			.logo {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: white;
+				@include transition-property(opacity);
+				@include transition-duration(.25s);
+				@include transition-timing-function(ease-in-out);
+
+				img {
+					@include absoluteCenter;
+					height: 80%;
+					width: auto;
+				}
+			}
+			.content {
+			  padding: 20px;
+			  box-sizing: border-box;
+			  text-align: center;
+			  background: $green;
+			  color: white;	
+			  margin: 0;
+			  h3{
+			  	@include Header3;
+			  	color: white;
+			  }
+			  a {
+			  	color: $charcoal;
+			  }
+			}
+			&:hover {
+				.logo {
+					opacity: 0;
+				}
+			}
+			&:nth-child(3n){
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.section-heading{
+	h2 { 
+		color: $charcoal;
+		display: inline-block;
+		vertical-align: baseline;
+		float: none; 
+		width: span(9);
+	}
+	a.view-more { 
+		font-weight: normal; 
+		text-align: right;
+		display: inline-block;
+		vertical-align: baseline;
+		float: none;
+		&:after{
+			content: $right-nav-arrow;
+			font-family: "FontAwesome";
+			margin-left: 10px;
+		}
+	}
+}
+
+.page-post-content {
+
+	p,h1,h2,h3,h4,h5,ul,ol { margin-bottom: 20px; }
+	h3 { color: $textblue; }
+	ul, ol {
+		margin-bottom: 1em;
+		li { margin-bottom: 1em; }
+	}
+
+	ul{
+		li {
+			@include Body;
+			margin-bottom: 1em;
+			list-style: none;
+			&:before { 
+				content: '\2022'; 
+				display: inline-block;
+				margin-right: 10px;
+				color: $green;
+			}
+		}
+	}
+
+	ol{
+		li {
+			@include Body;
+			margin-bottom: 1em;
+			list-style: none;
+			counter-increment: step-counter;
+			&:before { 
+				content: counter(step-counter)'.'; 
+				display: inline-block;
+				margin-right: 10px;
+				color: $green;
+				// font-size: 20px;
+				vertical-align: baseline;
+			}
+		}
+	}
+
+	@include breadcrumb; 
+	@include accordion;
+	@include sidebar;
+	.sidebar { 
+		.article-preview {
+			.thumbnail{
+				width: 80px;
+				height: 80px;
+				border: 2px solid white;
+				outline: 1px solid $lightgray;
+				vertical-align: middle;
+			}		
+			.post-content {
+				vertical-align: middle;
+			}
+			h4 { margin-bottom: 5px; a { color: $blue; }}
+			h5 {
+				font-weight: normal;
+				line-height: 1em;
+			}
+			p { display: none; }
+		}
+	}
+
+	@include breakpoint($mobile){
+		& > *[class^="span-"]{
+			@include span(12);
+		}
+	}
+}
+
+.single {
+	h3 { color: $textblue; }
+	.post-content {
+		& > .container {
+			padding-top: 100px;
+			@include breakpoint($mobile){
+				& > *[class*="span-"]{
+					@include span(12);
+				}
+			}
+		}
+		.content {
+			@include Body;
+			h1,h2,h3,h4,h5,h6 {
+				margin-bottom: 15px;
+			}
+
+			blockquote { color: $green; border-left: 2px solid $green; padding-left: 30px; p{ @include Header5; font-size: 22px; font-style: italic; font-weight: normal; color: $green; line-height: 1.2em; } }
+
+			h1{ color: $green; margin-bottom: 10px; }
+			h3{ color: $textblue; font-size: 22px; }
+			p { margin-bottom: 1.5em; line-height: 2em; }
+			h5.posted-date {
+			margin-bottom: 10px;
+			color: $blue;
+			}
+			.subheadline {
+			font-size: 22px;
+			}
+
+			.post-heading {
+				margin-bottom: 40px;
+			}
+
+		}
+		@include breadcrumb; 
+		@include sidebar;
+		.sidebar { 
+			.article-preview {
+				.thumbnail{
+					width: 80px;
+					height: 80px;
+					border: 2px solid white;
+					outline: 1px solid $lightgray;
+					vertical-align: middle;
+				}		
+				.post-content {
+					vertical-align: middle;
+				}
+				h4 { margin-bottom: 5px; a { color: $blue; }}
+				h5 {
+					font-weight: normal;
+					line-height: 1em;
+				}
+				p { display: none; }
+			}
+		}
+	}
+
+	.bottom-content {
+		h2 { 
+			margin-bottom: 20px;
+		}
+
+		li {
+			margin-bottom: 10px;
+		}
+
+		h5 {
+			@include Header4;
+			color: $blue;
+			margin-bottom: 1em;
+		}
+		
+		.container{
+			@include breakpoint($mobile){
+				& > *[class^="span-"]{
+					@include span(12);
+				}
+			}
+		}
+	}
+}
+
+.event-header {
+	@extend .section-heading;
+}
+
+.event-feature {
+	.thumbnail {
+		@include span(6);
+		height: 350px;
+		@include breakpoint($mobile) {
+			height: 42vw;
+			.host-thumb {
+				bottom: -20px;
+				left: 0px;
+			}
+		}
+	}
+	.post-content {
+		@include span(5);
+		padding-left: 0;
+	}
+}
+
+// Contact
+.newsletter{
+	h4 { text-align: center; margin-bottom: 20px; color: white; }
+	form {
+		p { display: inline-block; }
+		input[type="text"], input[type="email"] { padding: 7px; margin-bottom: 10px; }
+		input[type="submit"] { @include button("fill"); @include flex(1); }
+		.your-email, input[type="submit"] { display: inline-block; vertical-align: top; }
+	}
+}
+
+.contact-form{
+	.wpcf7-form{
+		p { max-width: none; }
+		.first-name, .last-name, .email-address, .phone-number{
+			display: inline-block;
+			@include span(6);
+			input {
+				width: 100%;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+		}
+		.last-name, .phone-number {
+			margin-right: 0;
+		}
+		.your-message{
+			@include span(12);
+			textarea { width: 100%; border: 1px solid $lightgray; padding: 10px; }
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"]{
+			@include button("fill");
+		}
+
+		.other-ways {
+			float: right;
+			padding-top: 10px;
+		}
+
+
+
+	}
+}
+
+.full-contact-form {
+	padding: 40px;
+	background: $seagreen;
+
+	form {
+		& > p, & > h2 {	
+			color: white;
+			@include span(8 at 3);
+			float: none;
+		}			
+		h2 { margin-bottom: 10px; font-size: 18px; }
+		p { margin-bottom: 20px; }
+	}
+
+
+	.notice {
+		font-size: 8px;
+		display: inline-block;
+		line-height: 1.3em;
+		width: 210px;
+		vertical-align: top;
+	}
+}
+
+
+
+
+//** Pages **//
+.page.news{
+	.site-wrapper {
+		.news-preview {
+			margin-bottom: 50px;
+			&:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			@include breakpoint($mobile){
+				.span-6{
+					@include span(12);
+					.thumbnail { width: 150px; height: 150px; }
+				}
+			}
+		}
+
+		.newsletter {
+			form { 
+				p {
+					width: 60%;
+					@include breakpoint($mobile){
+						width: 100%;
+					}
+				}
+				input, span.your-email {
+					@include flex(1);
+
+				}
+				span.your-email{
+					width: 60%; 
+					input{ width: 100%; padding: 20px; border: 1px solid $lightgray; }
+				}
+				input[type="submit"] { 
+					padding: 16px;
+					font-size: 18px;
+					border-top-left-radius: 0px;
+					border-bottom-left-radius: 0px;
+				 }
+
+				@include breakpoint($mobile){
+					span.your-email, span.your-email input, input[type="submit"] { width: 100%; }
+					input { margin-bottom: 1em; }
+				}
+			}
+		}
+
+		.press-releases {
+			h3 {
+				color: $textblue;
+				margin-bottom: 5px;
+			}
+			h5 {
+				color: $blue;
+			}
+			li {
+				border-bottom: 1px solid $lightgray;
+				padding-bottom: 20px;
+				margin-bottom: 20px;
+			}
+			.contact {
+				@include push(1);
+				@include Body;
+				background: $lightblue;
+				padding: 30px;
+				a, .phone { display: block; padding-top: 3px; }
+				a:before {
+					@include fa-icon($contact-icon);
+					margin-right: 8px;
+				}
+			}
+		}
+		
+	}
+}
+
+.page.news, .category.archive {
+	h1,h2 { margin-bottom: 50px; }
+	// p,ul,ol { margin-bottom: 20px; }
+	.archive-feed{
+		.article-feature-preview{
+			background: white;
+			margin-bottom: 30px;
+			height: 325px;
+			position: relative;
+
+			.thumbnail{
+				@include span(6);
+				height: 323px;
+			}
+			.post-content {
+				position: absolute;
+				height: 100px;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				width: span(6);
+				margin-right: 0;
+				display: inline-block;
+				padding-left: 0;
+			}
+		}
+	}
+
+}
+
+

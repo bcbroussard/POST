@@ -1,0 +1,39 @@
+ <div class="desktop">
+	<div class="span-6 featured news">
+		{# {{ feature[0].thumbnail }} #}
+		{% set article = feature[0] %}
+		{% include 'view/content/article-feature-preview.twig' %}
+	</div>
+	<div class="span-6 news last">
+		{% for article in news %}
+			{% include 'view/content/article-preview.twig' %}
+		{% endfor %}
+	</div>
+</div>
+<div class="mobile news">
+	{% set article = feature[0] %}
+		{% include 'view/content/article-preview.twig' %}
+
+{# 	<div class="post">
+		<img class="thumbnail" src="{{ feature[0].thumbnail.src('medium') }}"/>
+		<div class="post-content">
+			<h4>{{feature[0].post_title}}</h4>
+			<h5>Posted {{feature[0].posted_date|date("m.d.Y")}}</h5>
+			{{feature[0].post_content}}
+		</div>
+	</div> #}
+{% for article in news %}
+	{% include 'view/content/article-preview.twig' %}
+{# 	<div class="post">
+		<img src="{{ article.thumbnail.src('medium') }}"/>
+		<div class="post-content span-7">
+			<h4>{{article.post_title}}</h4>
+			<h5>Posted {{article.posted_date|date("m.d.Y")}}</h5>
+			<p>{{article.post_content}}</p>
+		</div>
+	</div> #}
+{% endfor %}
+</div>
+<div class="span-6 content"> 
+	{% include "view/content/page-content.twig" %}
+</div>

@@ -1,0 +1,210 @@
+footer {
+	background: $lightblue;
+	.span-4{
+		margin-right: span(5);
+	}
+	// .wrap { padding: span(1) 0 0; }
+	//Mobile
+	.container { 
+		@include container($container); 
+		padding-top: 65px; 
+		padding-bottom: 65px; 
+
+		@include breakpoint($desktop){
+			max-width: 95%;
+			h4 {
+				font-size: 22px;
+			}
+			p, a, input {
+				font-size: 18px;
+			}
+			a {
+				line-height: 2em;
+			}
+		}
+
+		@include breakpoint($mobile){
+			padding: 50px 0;
+		}
+	}
+
+	h4{ color: $charcoal; margin-bottom: gutter(); }
+
+	span.heading{
+		display: inline-block;
+		padding: 6px 0;
+		margin-right: 10px;
+	}
+
+	.social {
+		@include social($green);
+		a {
+			padding: 6px;
+			width: 32px;
+			height: 32px;
+			font-size: 15px;
+		}
+	}
+
+	.newsletter {
+		p { margin-bottom: gutter(); text-align: left; }
+		input[type="submit"] {
+			@include button("fill");
+		}
+		input[type="text"], input[type="email"] {
+			padding: 5px;
+		}
+		@include breakpoint($mobile){
+			input{
+				&[type="text"], &input[type="email"], &[type="submit"], &[type="email"]{
+					width: 100%;
+				}
+			}
+			.your-email {
+				width: 100%;
+			}
+		}
+	}
+
+	.quick-links{
+		nav ul { 
+			@include column-count( 2);
+			@include Body;
+			line-height: 1.5em;
+		}
+	}
+	.wrap.white{ padding: 0; }
+	.logos {
+		.owl-item {
+			height: 100px; 
+			& + .owl-item { margin-right: 10px; }
+
+			a { display: inline-block; vertical-align: middle; }
+			img { 
+				width: 	auto;
+				height: auto;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				max-height: 100px; 
+			}
+
+		}
+	}
+
+	.footer-bottom{
+		background: $green;
+		padding: 5px 0;
+		.container { padding: 10px 0 0; }
+		.elefint-mark{ 
+			font-size: 12px;
+			color: white;
+			display: inline-block;
+			svg {
+				width: 50px;
+				display: inline-block;
+				vertical-align: middle;
+				margin-top: -10px;
+			}
+			a { display: inline-block;  }
+			.mark-text{
+				display: inline-block;
+				vertical-align: top;
+				line-height: 1.35em;
+				b{
+					text-indent: -12px;
+					display: block;
+				}
+			}
+			.st0{fill:#231E20;}
+			.st1{fill:#ffffff;}
+		}
+		.copyright{
+			display: inline-block;
+			@include Body;
+			font-style: italic;
+			color: white;
+			padding: 10px 0;
+			float: right;
+		}
+	}
+
+	@include breakpoint($mobile){
+		.stay-connected, .quick-links {
+			width: 100%;
+		}		
+		.logos {
+			.owl-item {
+				img { height: 50px; }
+			}
+
+		}
+	}
+}
+
+.rates.modal{
+	background: white;
+	.close {
+		background-image: $close-gray;
+		&:hover { background-image: $close-blue; }
+	}
+	.container {
+		overflow: scroll;
+		height: 100vh;
+		padding: 80px 40px 0;
+		background: none; 
+	}
+	hgroup {
+		margin-bottom: 40px;
+		h1 { margin-bottom: 5px; color: $green; }
+		h5 { font-weight: normal; font-style: italic; margin-bottom: 20px; }
+	}
+	h1{
+		@include Header2;
+		color: $textblue;
+		margin-bottom: 10px;
+
+	}
+	h2{
+		@include Header4;
+		color: $blue;
+		margin-bottom: 10px;
+	}
+	.rate-nav {
+		li { margin-bottom: .5em; }
+	}
+	.rate-table{
+		margin-bottom: 1em;
+		ul {
+			display: block;
+			width: 100%;
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+			li { 
+				display: inline-block;
+				@include Body; 
+				@include span(4);
+				&:last-of-type{
+					margin-right: 0;
+				}
+			}
+			&.table-row {
+				border-bottom: 1px solid $lightgray;
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+			}
+			&.table-header { 
+				margin-bottom: 20px;
+				li {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

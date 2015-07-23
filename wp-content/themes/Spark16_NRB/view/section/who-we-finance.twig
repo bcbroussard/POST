@@ -1,0 +1,127 @@
+<section class="wrap no-padding">
+	{{ home_feature_gallery }}
+</section>
+{% set content_block = post.get_field('content_block')[0] %}
+{% if content_block.acf_fc_layout == "content_with_links" %}
+<section class="wrap block-{{ loop.index }}">
+	<div class="container content-links"></br>
+		<div class="span-7 content"> {{content_block.text}} </div>
+		<ul class="span-5 last links"> {% include 'view/content/link-list.twig' %} </ul>
+	</div>
+</section>
+{% elseif content_block.acf_fc_layout == "full_width_content" %}
+<section class="wrap block-{{ loop.index }}">
+<div class="container"> </br>
+	<div class="span-12 full-width"> {{content_block.content}} </div>
+</div>
+</section>
+{% elseif content_block.acf_fc_layout == "content_with_pie" %}
+<section class="wrap block-{{ loop.index }}">
+	<div class="container content-pie"></br>
+		<div class="span-7 content"> {{content_block.text}} </div>
+		<div class="span-5 chart doughnut-chart last">
+			<h3>Our Portfolio By the Numbers</h3>
+			<span class="sub-heading">As of December, 2013</span>
+			<div class="doughnut-chart">
+				<div class="chart-text">
+	                <h6>Loans Outstanding</h6>
+	                <h2>{{ content_block.chart[0].total }}</h2>
+	            </div>
+				<canvas id="doughnut-chart" data-chartdata='{{ content_block.chart|json_encode() }}' width="250" height="250"></canvas>
+	            <div id="chartjs-tooltip"></div>
+	        </div>
+		</div>
+	</div>
+</section>
+{% endif %}
+	
+<section class="wrap no-padding">
+	<div class="sector filter-selector">
+		<span class="switch">View lending portfolio by sector</span>
+		<ul>
+			{# <li data-filter="*">View all sectors</li> #}
+			{% for sector in sectors %}
+			<li class="{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}"
+				data-filter=".{{ sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }}">{{ sector }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<ul class="container clients">
+		{% for client in post.get_field('clients') %}
+			{# {{ dump(client) }} #}
+			<li 
+			class="client {{ client.sector|lower|replace({'&':''})|replace({"  ":"-"," ":"-"}) }} {% 
+				if loop.index == 1 
+				or loop.index == 9
+				or loop.index % 14 == 1 
+				or loop.index % 14 == 9 
+				%}wide{%
+				elseif loop.index == 3
+					or loop.index == 12
+					or loop.index % 14 == 3 
+					or loop.index % 14 == 12
+					%}tall{% endif %}" 
+			data-client="{{ client.name|lower|replace(' ', '-') }}" 
+			data-sector="{{ client.sector|lower|replace(' ', '-') }}"
+			style="background-image:url({{ client.company_image.url }})">
+				<div class="client-info">
+					<span class="sector-logo"></span>
+					<h3>{{ client.name }}</h2>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</section> 	
+
+{% for client in post.get_field('clients') %}
+		<section class="client-modal modal {{ client.name|lower|replace(' ', '-') }}">
+			<span class="close"></span>
+			<div class="container">	
+				<div class="modal-hero" style="background-image:url({{client.company_image.url}})">
+					<div class="modal-content">
+						<span class="company-logo">{# <img src="{{ client.company_logo.url }}"/> #}</span>
+						<ul class="company-info">
+							<li>{{client.sector}}</li>
+							<li>{{client.location}}</li>
+							<li>{{client.website}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="content" style=""> 
+					<p>{{client.company_description}}</p>
+				</div>
+				<div class="pager"> 
+					{% set prev = post.get_field('clients')[loop.index0 - 1 ] %}
+					{% set next = post.get_field('clients')[loop.index0 + 1 ] %}
+					{% if prev %}<span class="prev" data-client="{{ prev.name|lower|replace(' ', '-') }}" >{{ prev.name }}</span>{% endif %}
+					{% if next %}<span class="next" data-client="{{ next.name|lower|replace(' ', '-') }}">{{ next.name }}</span>{% endif %}
+				</div>
+			</div>
+		</section>
+{% endfor %}
+
+{% for content_block in post.get_field('content_block') %}
+	{% if loop.index > 1 %}
+		{% if content_block.acf_fc_layout == "content_with_links" %}
+		<section class="wrap block-{{ loop.index }}">
+			<div class="container content-links"></br>
+				<div class="span-7 content"> {{content_block.text}} </div>
+				<ul class="span-5 last links"> {% include 'view/content/link-list.twig' %} </ul>
+			</div>
+		</section>
+		{% elseif content_block.acf_fc_layout == "full_width_content" %}
+		<section class="wrap block-{{ loop.index }}">
+		<div class="container"> </br>
+			<div class="span-12 full-width"> {{content_block.content}} </div>
+		</div>
+		</section>
+		{% elseif content_block.acf_fc_layout == "content_with_pie" %}
+		<section class="wrap block-{{ loop.index }}">
+			<div class="container content-pie"></br>
+				<div class="span-7 content"> {{content_block.text}} </div>
+				<div class="span-5 last "></div>
+			</div>
+		</section>
+		{% endif %}
+	{% endif %}
+{% endfor %}

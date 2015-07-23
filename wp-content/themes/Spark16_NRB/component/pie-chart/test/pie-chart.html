@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+        <script src="../js/Chart.min.js"></script> 
+        <link rel="stylesheet" href="../css/doughnut.css">
+    </head>
+    <body>
+        <div class="portfolio-chart doughnut-chart">
+            <div class="chart-text">
+                <h5>Loans Outstanding</h5>
+                <h2>$160M</h2>
+            </div>
+            <canvas id="doughnut" width="250" height="250"></canvas>
+            <div id="chartjs-tooltip"></div>
+        </div>
+        <script type="text/javascript">
+            (function($){
+
+            Chart.defaults.global.customTooltips = function(tooltip) {
+                // Tooltip Element
+                var tooltipEl = $('#chartjs-tooltip');
+                // Hide if no tooltip
+                if (!tooltip) {
+                    tooltipEl.css({
+                        opacity: 0
+                    });
+                    return;
+                }
+                // Set caret Position
+                tooltipEl.removeClass('above below');
+                tooltipEl.addClass(tooltip.yAlign);
+                // Set Text
+                tooltipEl.html(tooltip.text);
+                // Find Y Location on page
+                var top;
+                if (tooltip.yAlign == 'above') {
+                    top = tooltip.y - tooltip.caretHeight - tooltip.caretPadding;
+                } else {
+                    top = tooltip.y + tooltip.caretHeight + tooltip.caretPadding;
+                }
+                // Display, position, and set styles for font
+                tooltipEl.css({
+                    opacity: 1,
+                    left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+                    top: tooltip.chart.canvas.offsetTop + top + 'px',
+                    fontFamily: tooltip.fontFamily,
+                    fontSize: tooltip.fontSize,
+                    fontStyle: tooltip.fontStyle,
+                    width: '230px'
+                });
+            };                
+
+                var data = [
+                    {
+                        value: 300,
+                        color:"#F7464A",
+                        highlight: "#FF5A5E",
+                        label: "<div class='doughnut-tooltip'><h4 class='heading'>Classic Community Building</h4><h5 class=''>Legacy loans made during our start-up phase.</h5></div>"
+                    },
+                    {
+                        value: 50,
+                        color: "#46BFBD",
+                        highlight: "#5AD3D1",
+                        label: "Green"
+                    },
+                    {
+                        value: 100,
+                        color: "#FDB45C",
+                        highlight: "#FFC870",
+                        label: "Yellow",
+                    }
+                ];
+
+                var ctx = $("#doughnut").get(0).getContext("2d");
+                var myDoughnutChart = new Chart(ctx).Doughnut(data,{
+                    // String - Template string for single tooltips
+                    tooltipTemplate: "<h2><%= value %></h2><%if (label){%><%=label %> <%}%>",
+                    // String - Template string for multiple tooltips
+                    multiTooltipTemplate: "<%= value + ' %' %>"
+                });
+
+                $(document).ready(function(){
+
+                })
+
+            })(jQuery);
+        </script>
+    </body>
+</html>

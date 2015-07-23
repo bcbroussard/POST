@@ -1,0 +1,36 @@
+<section class="wrap no-padding">
+	{{ home_feature_gallery }}
+</section>
+<section class="wrap no-padding">
+	<div class="container">
+		<div class="page-post-content span-12">
+			{{ post.content }}
+			{% for content_block in post.get_field('contact_content') %}
+				{% if content_block.acf_fc_layout == "contact_list" %}
+					<div class="container content-contacts">
+						<div class="span-12 content"> 
+							<h1>Ways to Contact Us</h1>
+							<ul class="contacts">
+								{% for contact in content_block.contact %}
+									{% if contact.type == "section heading" %}
+										<li class="section-heading"><h3>{{ contact.heading}}</h3></li>
+									{% else %}
+										<li class="contact">
+											<h5>{{ contact.heading }}</h5>
+											<p class="description">{{ contact.description }}</p>
+											<span class="phone">{{ contact.phone }}</span>
+											<a href="mailto:{{ contact.email }}">{{ contact.email_label }}</a>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+
+

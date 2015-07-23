@@ -1,0 +1,11 @@
+<section class="wrap {{ classes }}" style="background-image:url({{ post.get_field('bottom_photo').url }})">
+	<div class="container">
+		<ul class="span-4">
+			<h2>Find the Banking Solutions Right for You</h2>
+			{# {{dump(post.get_field('links'))}} #}
+	{% for link in post.get_field('links') %}	
+		<li><a href="{{link.guid}}" class="icon {{link.post_name}}">{{link.post_title}} </a></li>
+	{% endfor %}
+	</div>
+	<span class="photo-credit"><b>Photo Credit:</b> {{ post.photo_credit }}</span>
+</section>

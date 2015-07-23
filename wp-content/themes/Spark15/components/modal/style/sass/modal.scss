@@ -1,0 +1,101 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+$close-modal: url('style/images/icon-close-white.png');
+$close-modal-hover: url('style/images/icon-close-blue.png');
+
+@mixin modal{
+	display: block;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%; 
+	background: #bbbbbb;
+	color: black;
+	opacity: 1;
+	margin-top: 1px; 
+	transition: 750ms all linear;
+	z-index: 9999;
+	line-height: 1.3em;
+	font-size: 12px;
+
+	.container{
+		width: 600px;
+		min-height: 100vh;
+		max-width: 90vw;
+		padding: 40px;
+		position: relative;
+		display: block;
+		background: #f8f8f8;
+		border-top: 4px solid #ddd;
+	}
+
+	&.closed{
+		opacity: 0;
+		z-index: -1;
+		margin-top: -100%;
+	}
+
+	.close{
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		width: 30px;
+		height: 30px;
+		border: none;
+		background-color: transparent;
+		background-image: $close-modal;
+		background-size: cover;
+		&:hover{
+			background-image: $close-modal-hover;
+		}
+
+	}
+
+	span{
+		display: inline-block;
+		width: 100%;
+		&.heading {
+			font-weight: bold;
+		}
+	}
+
+	h2{
+		font-size: 18px;
+		color: black;
+		margin-bottom: 10px;
+	}
+
+	nav {
+		margin-top: 1em;
+		li{
+			display: inline-block;
+			margin-right: 1em;
+			font-size: 16px; 
+			&.continue{
+				a{
+					display: block;
+					background: #333;
+					color: white;
+					padding: 10px;
+					border-radius: 5px;
+					text-decoration: none;
+				}
+			}
+			&.stay{
+				color: red;
+			}
+		}
+	}
+}
+
+.modal{
+	@include modal;
+}

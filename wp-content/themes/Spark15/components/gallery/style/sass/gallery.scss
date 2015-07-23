@@ -1,0 +1,88 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+$container: 1180;
+$mobile-breakpoint: 820px;
+
+.gallery{
+	margin: auto;
+	width: 100vw;
+	height:540/$container * 100vw;
+	max-height: 540px;
+	// min-height: 360px;
+	font-size: 24px;
+	overflow: hidden;
+	.cycle-slide {
+		width: 100%;
+		height: 540/$container * 100vw;
+		max-height: 540px;
+		min-height: 360px;
+		background-size: cover;
+		// position: relative;
+		display: block;
+
+		.content{
+			max-width: #{$container}px;
+			height: 100%;
+			margin: auto;
+			position: relative;
+		}
+	}
+	.pager-container{
+		position: absolute;
+		left: 2vw;
+		right: 0;
+		bottom: 10px;
+		width: 100%;
+		max-width: #{$container}px;
+		margin: auto;
+		z-index: 1000;
+
+		.cycle-pager {
+			padding-left: 10px;
+			span { 
+				text-indent: -3000px;
+				width: 20px;
+				height: 20px;
+				background: black;
+				border-radius: 10px;
+				display: inline-block;
+				margin-right: 0.3em;
+				&.cycle-pager-active{
+					background: white;
+				}
+			}
+		}
+	}
+
+	&[data-count="1"]{
+		.content-wrap{
+			margin: auto;
+			text-align: center;
+			width: 60vw;
+		}
+		.five-left{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			height: 130px;
+			width: 60vw;
+		}
+	}
+
+	@media ( max-width: $mobile-breakpoint ){
+		.pager-container{ left: 0; text-align: center; }
+		.feature-slide-content.five-left { left: 0; bottom: 0 !important; }
+		.cycle-slide { min-height: 220px; }
+	}
+
+}
+
+ 

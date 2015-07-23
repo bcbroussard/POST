@@ -1,0 +1,128 @@
+<section class="wrap no-padding">
+	{{ home_feature_gallery }}
+</section>
+{% if post.template == "Client" or post.template[1] == "Client"  %}
+<section class="wrap no-padding">
+	<div class="page-post-content content container">
+		{% include "view/content/page-content.twig" %}
+	</div>
+</section>
+<section class="wrap">
+	<div class="solutions-list container">
+		<div class="span-12">
+			<h2>Banking Solutions for {{ post.post_title }}</h2>
+			{% for solution in post.get_field('banking_solutions') %}
+				<li class="{{ TimberPost(solution).post_name }} icon"><a href="{{ TimberPost(solution).guid }}">{{ TimberPost(solution).post_title }}</a></li>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<section class="wrap gray">
+	<div class="container content-footer">
+		{# {{ dump(post.client_footer) }} #}
+		<div class="span-6 page-post-content">{{ post.client_footer[0]|shortcodes|wpautop }}</div>
+		<div class="span-4 last">
+			<a class="switch-kit fill">Get Our Switch Kit (PDF)</a>
+			<h4>Related Links</h4>
+			<ul class="related-links">
+			{% for link in post.get_field('related_links') %}
+				<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% elseif post.template == "Contact" or post.template[1] == "Contact"  %}
+<section class="wrap">
+	<div class="container">
+		<div class="page-post-content content container">
+			{% include "view/content/page-content.twig" %}
+		</div>
+	</div>
+</section>
+{% elseif post.template == "Product" or post.template[1] == "Product"  %}
+<section class="wrap">
+	<div class="container">
+		<div class="page-post-content content">
+			{% include "view/content/page-content.twig" %}
+		</div>
+		{# <div class="container content-footer">
+			<div class="span-8">{{ post.footer_content }}</div>
+			<div class="span-4 last">
+				<ul class="related-links">
+				{% for link in post.get_field('related_links') %}
+					<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div> #}
+	</div>
+</section>
+
+<section class="wrap gray">
+	<div class="container content-footer">
+		<div class="span-6 page-post-content">{{ post.client_footer[0]|wpautop|shortcodes }}</div>
+		<div class="span-4 last">
+			<a class="switch-kit fill">Get Our Switch Kit (PDF)</a>
+			<h4>Related Links</h4>
+			<ul class="related-links">
+			{% for link in post.get_field('related_links') %}
+				<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% elseif post.template == "Resource" or post.template[1] == "Resource"  %}
+<section class="wrap resources">
+	<div class="container">
+		<div class="page-post-content content span-8">
+			{% include "view/content/page-content.twig" %}
+		</div>
+		<div class="span-4 last sidebar">
+			<h2>Covered on this Page</h2>
+			<ul class="accordion-nav">
+				{% for content_block in post.get_field('content_block') %}
+					<li><a href="#{{ content_block.heading|raw|lower|replace({' ':'-'}) }}">{{ content_block.heading }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+
+{% else %}
+
+<section class="wrap">
+	<div class="container">
+		<div class="page-post-content content span-12">
+			<div class="span-8 content">{% include "view/content/page-content.twig" %}</div>
+			<div class="span-4 sidebar last">
+				<div class="block">
+					<h3>What to Read Next</h3>	
+					<div class="suggested-posts">
+						{% for article in post.get_field('suggested') %}
+							{% set article = TimberPost(article) %}
+							{# {{ dump(article) }} #}
+							{% include 'view/content/article-preview.twig' %}
+						{% endfor %}
+					</div>	
+				</div>	
+				{% if post.get_field('related_links') %}
+				<div class="block">
+					<h3>Related Links</h3>
+					<ul class="related-links suggested-posts">
+					{% for link in post.get_field('related_links') %}
+						<li><a href="{{ link.page.guid }}">{{ link.page.post_title }}</a></li>
+					{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+			</div>			
+		</div>
+	</div>
+</section>
+
+{% endif %}
+
+
+
