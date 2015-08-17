@@ -22,19 +22,3 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	{{ sign_in_form }}
 	<div class="site-wrapper">
-		<header class="container">
-			<a href="{{ site.url }}" class="logo span-4">
-				<img class="desktop" src="{{ site_logo.desktop.url }}"/>
-				<img class="mobile" src="{{ site_logo.mobile.url }}"/>
-			</a>
-			<div class="header-sub span-8">
-				<div class="slider">
-					{{ sub_nav }}
-					{{ search }}
-				</div>
-			</div>
-			{{ main_nav }}
-			<a href="#" id="mobile-trigger" class="menu-trigger"></a>
-		</header>
-		{{ mobile_nav }}
-		{{ site_notice }}

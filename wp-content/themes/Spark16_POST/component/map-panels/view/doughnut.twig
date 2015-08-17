@@ -1,0 +1,18 @@
+<div class="portfolio-chart doughnut-chart">
+    <div class="chart-text">
+        <h5>Loans Outstanding</h5>
+        <h2>$160M</h2>
+    </div>
+    <canvas 
+    	id="doughnut" 
+    	width="250" 
+    	height="250"
+    	data-value= "[
+    {% for slice in chart.slices %}
+    	{ value: {{ slice.value }}, heading: {{ slice.heading }}, caption: {{ slice.caption }} },
+    {% endfor %}
+    	]"
+    >
+    </canvas>
+    <div id="chartjs-tooltip"></div>
+</div>
