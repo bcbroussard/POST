@@ -6,9 +6,472 @@
 /**
 	GLOBAL ELEMENTS
 **/
-@import "guide/layout";
+@import "guide/typography_and_style";
 @import "guide/brand";
-// @import "guide/typography_and_style";
+@import "guide/layout";
+@import "../../view/sass/archive";
+@import "../../view/sass/contact";
+@import "../../view/sass/donate";
+@import "../../view/sass/events";
+@import "../../view/sass/get_involved";
+@import "../../view/sass/global";
+@import "../../view/sass/hikes";
+@import "../../view/sass/home";
+@import "../../view/sass/news";
+@import "../../view/sass/single_post";
+@import "../../view/sass/staff";
+@import "../../view/sass/what_we_do";
+
 // @import "global/components";
 
 
+.small-header > img {
+  margin-right: 700px;
+}
+.main-page-hero {
+  background: url('img/postredwoods.jpg');
+  @include background-image;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 553px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-content {
+  margin-left: span(2);
+  margin-right: span(2);
+}
+
+.hero-text {
+  @include p-style($offwhite);
+  margin-top: span(2.5);
+  margin-bottom: 5px;
+  text-transform: none;
+}
+
+.hero-heading {
+  @include h2-style($offwhite);
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+
+.button-examples {
+  display: block;
+  text-align: none;
+  margin-left: span(3);
+  margin-right: span(3);
+}
+
+.left-button {
+  display: inline-block;
+  float: left;
+  margin-left: 25px;
+}
+
+.right-button {
+  display: inline-block;
+  float: right;
+  margin-right: 25px;
+}
+
+.button-clear {
+  @include button-dashed;
+  margin-left: 45px;
+}
+
+.button-italic {
+  color: $offwhite;
+  text-transform: none;
+  font: {
+    family: $frutiger-light;
+    size: 10px;
+    style: italic;
+  }
+}
+
+#one {
+  margin-left: 40px;
+}
+
+#two {
+  margin-left: 5px;
+}
+
+.button-opaque {
+  @include button-solid;
+}
+
+// styles for center section after hero section
+
+.center-section {
+  // width: span(8 of 12 last);
+}
+.tiles {
+  margin-right: 0;
+  display: block;
+  margin-left: span(2);
+}
+
+.color-tiles {
+  width: 74px;
+  height: 222px;
+  border: 5px solid $bluegray;
+  border-radius: 5px;
+  margin-left: 50px;
+  padding-left: 0;
+}
+
+.tile {
+  display: inline-block;
+  float: left;
+  width: 37px;
+  height: 37px;
+}
+
+.lightgreen {
+  background-color: $lightgreen;
+}
+
+.darkgreen {
+  background-color: $darkgreen;
+}
+
+.verylightgreen {
+  background-color: $verylightgreen;
+}
+
+.navy {
+  background-color: $navy;;
+}
+
+.darkestblue {
+  background-color: $darkestblue;
+}
+
+.middleblue {
+  background-color: $middleblue;
+}
+.lightblue {
+  background-color: $lightblue;
+}
+
+.bluegray {;
+  background-color: $bluegray;
+}
+
+.darkergray {;
+  background-color: $darkergray;
+}
+
+.midgray {
+  background-color: $midgray;
+}
+.darkorange {
+  background-color: $darkorange;
+}
+
+.lightorange {
+  background-color: $lightorange;
+}
+
+.tiles-title {
+  font-family: "Frutiger 67 Bold Condensed";
+  color: black;
+  font-size: 14px;
+  font-weight: $regular;
+  margin-left: span(4);
+  margin-bottom: 22px;
+  letter-spacing: 0.6px;
+
+}
+.center-section > .top-section-text {
+  @include clearfix;
+  font-family: $bebas-light;
+  display: block;
+  margin-left: 15px;
+}
+
+.typography {
+  color: black;
+  font-family: $frutiger-bold;
+  font-size: 14px;
+  font-weight: $regular;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
+}
+
+.font-description {
+  font-family: $frutiger-light;
+  font-size: 10px;
+  font-style: italic;
+  color: $midgray;
+}
+
+.heading-font {
+  display: block;
+  @include span(6 of 6);
+  @include clearfix;
+  border-bottom: 1px solid $bluegray;
+  // border-bottom: 1px solid $bluegray;
+}
+
+.heading-font .center-heading {
+  @include h2-style ($darkestblue);
+  @include span(4 of 6);
+  margin: 0;
+  margin-right: 0;
+  display: inline-block;
+  float: left;
+}
+
+#heading {
+  @include span(2 of 6 last);
+  display: inline-block;
+  float: left;
+  margin-right: -100%;
+  margin-left: 100px;
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+
+.top-section-text > .subheading-font {
+  display: block;
+  @include span(6 of 6);
+  @include clearfix;
+  padding-top: 25px;
+  border-bottom: 2px solid $bluegray;
+}
+
+.subheading-font > .center-subheading {
+  @include h5-style ($darkgreen);
+  @include span(4 of 6);
+  margin: 0;
+  display: inline-block;
+  float: left;
+}
+
+#subheading {
+  display: inline-block;
+  float: left;
+  @include span(2 of 6 last);
+  margin-top: 0;
+  margin-left: 100px;
+  margin-bottom: 0;
+  padding-top: 5px;
+}
+
+.paragraph-font {
+  display: block;
+  @include span(6 of 6);
+  @include clearfix;
+  border-bottom: 1px solid $bluegray;
+  padding: 10px 0 0;
+}
+.paragraph-font > .post-description {
+  @include p-style ($navy);
+  @include span(3 of 6);
+  margin: 0;
+  display: inline-block;
+  float: left;
+  line-height: 1.7em;
+}
+#paragraph {
+  @include span(2 of 6 last);
+  display: inline-block;
+  float: left;
+  margin-left: 220px;
+  padding-top: 55px;
+  margin-bottom: 0;
+}
+
+.link-font {
+  display: block;
+  @include span(6 of 6);
+  @include clearfix;
+  border-bottom: 1px solid $bluegray;
+}
+
+.link-font > a {
+  @include text-link;
+  @include span(4 of 6);
+  display: inline-block;
+  float: left;
+  padding-top: 17px;
+  margin-right: 0;
+  text-decoration: none;
+}
+
+.link-font > a:after {
+  content: "\f105";
+  font-family: FontAwesome;
+  color: $middleblue;
+  position: relative;
+  padding-left: 5px;
+}
+
+#link {
+  display: inline-block;
+  float: left;
+  @include span(2 of 6 last);
+  margin-left: 121px;
+  margin-bottom: 3px;
+  padding-top: 10px;
+}
+
+.images {
+  color: black;
+  font-family: $frutiger-bold;
+  font-size: 14px;
+  font-weight: $regular;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+.bottom-images {
+  display: block;
+  @include span(6 of 6);
+  @include clearfix;
+  padding-bottom: 60px;
+}
+
+.bottom-images > .first-image {
+  display: inline-block;
+  padding-right: span(1.5);
+}
+
+.first-image > img {
+  @include image-border;
+  border-radius: 50%;
+}
+
+.image-caption {
+  @include image-caption;
+}
+
+#first-caption {
+  margin-left: 20px;
+}
+
+.bottom-images > .second-image {
+  display: inline-block;
+  padding-right: span(1.5);
+}
+
+#second-caption {
+  margin-left: 20px;
+}
+.bottom-images > .third-image {
+  display: inline-block;
+}
+
+.third-image > img {
+  @include image-border;
+}
+
+#third-caption {
+  margin-left: 35px;
+}
+
+.bottom-page-hero {
+  left: 0;
+  background: url('img/wood_pattern.png');
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 553px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0 auto;
+  color: $offwhite;
+  text: {
+    transform: uppercase;
+  }
+}
+
+.newsletter-subscription {
+  width: 63em;
+  margin-top: span(2.4);
+  margin-left: span(1.2);
+  margin-right: span(1);
+  padding-bottom: 30px;
+  height: 135px;
+  background: white;
+  border-radius: 2px;
+  border: 1px solid midgray;
+  box-shadow: 0 0 3px $midgray;
+}
+
+.subscribe {
+
+  text-align: center;
+  @include h5-style ($darkgreen);
+  margin-top: 45px;
+  margin-bottom: 15px;
+  padding-top: 43px;
+}
+
+#input_wrapper {
+  width: 70%;
+  height: 40px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 2px;
+}
+
+#input_wrapper > #text {
+  color: $middleblue;
+}
+input[type="text"] {
+  width: 70%;
+  height: 40px;
+  padding-right: 181px;
+  border-radius: 2px;
+}
+.subscribe-button {
+  position: absolute;
+  @include button-solid;
+  right: 8px;
+  top: 4px;
+}
+
+#text {
+  @include p-style ($middleblue);
+  font-style: italic;
+  margin-left: 0;
+  background-color: $offwhite;
+  border-radius: 4px;
+  padding-left: 25px;
+  border: 1px solid #CDD9E6;
+}
+.bottom-footer {
+  left: 0;
+  background: url('img/blue_footer_styletile-03.png');
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+::-webkit-input-placeholder {
+   color: $middleblue; 
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $middleblue;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $middleblue;   
+}
+
+:-ms-input-placeholder {  
+   color: $middleblue; 
+}
