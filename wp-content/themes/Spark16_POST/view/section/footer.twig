@@ -1,37 +1,8 @@
 <footer>
 	<section class="wrap no-padding">
-		<div class="container">
-			<div class="span-4 stay-connected">
-				<h4>
-					<span class="heading">Stay Connected</span>
-					<span class="social">
-						<a class="facebook" href="http://facebook.com/{{ facebook }}"></a>
-						<a class="twitter" href="http://twitter.com/{{ twitter }}"></a>
-						<a class="linkedin" href="http://linkedin.com/{{ linked_in }}"></a>
-					</span>
-				</h4>
-				<div class="newsletter">
-					<p>Get the latest in banking and community news delivered straight to your inbox</p>
-					{{ stay_connected }}
-				</div>
-			</div>
-			<div class="span-4 last quick-links">
-				<h4>Quick Links</h4>
-				{{ quick_links }}
-			</div>
-		</div>
-	</section>
-	<section class="wrap white no-padding">
-		<div class="container">
-			<div class="span-12 logos">
-				{% for logo in logos %}
-					<a href="{{ logo.link }}"><img src="{{ logo.logo.url }}"/></a>
-				{% endfor %}
-			</div>
-		</div>
 		<div class="footer-bottom">
 			<div class="container">
-				{% include 'views/plugs/elefint.html.twig' %}
+				{# {% include 'views/plugs/elefint.html.twig' %} #}
 				<span class="copyright"> &copy; {{ site.name }}, 
 					<script language="JavaScript" type="text/javascript">
 					    now = new Date
@@ -45,47 +16,3 @@
 		</div>
 	</section>
 </footer>
-<div class="rates modal closed">
-	<span class="close"></span>
-	<div class="container">
-		<hgroup class="span-12">
-			<h1>Rate Sheets</h1>
-			<h5>Effective as of 01.25.2015</h5>
-		</hgroup>
-		<div class="rate-nav span-4">
-			<h2>Go to rates for:</h2>
-			<ul>
-				{% for group in rates %}
-					<li class="rate-anchor"><a href="#{{ group.heading|lower|replace({" ":"-"}) }}">{{ group.heading }}</a></li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div class="span-8 tables last">
-		{% for group in rates %}
-			<h1 id="{{ group.heading|lower|replace({" ":"-"}) }}">{{ group.heading }}</h1>
-			{% for rate_group in group.rate_groups %}
-				<h2>{{ rate_group.heading }}</h2>
-				<h3>{{ rate_group.sub_heading }}</h3>
-				{% for table in rate_group["rate table"] %}
-					<div class="rate-table">
-						<h3>{{ table.heading }}</h3>
-						<ul class="table-header">
-							{% for column in table.table.header %}
-								<li>{{ column.c }}</li>
-							{% endfor %}
-						</ul>
-						{% for row in table.table.body  %}
-							<ul class="table-row">
-								{% for cell in row %}
-									<li>{{ cell.c }}</li>
-								{% endfor %}
-							</ul>
-						{% endfor %}
-					</div>
-				{% endfor %}
-			{% endfor %}
-		{% endfor %}
-		</div>
-	</div>
-</div>
-{% include '/components/speed-bump/view/speed-bump.twig' %}
