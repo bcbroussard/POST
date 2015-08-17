@@ -1,0 +1,13 @@
+.right-menu {
+  img {
+    background: url() no-repeat 50%;
+  }
+}
+@media (min-width: 820px) {
+  .mobile-subheading-only {
+    display: none;
+  }
+  .default-page > a {
+    display: none;
+  }
+}

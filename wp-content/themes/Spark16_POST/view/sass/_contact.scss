@@ -1,0 +1,36 @@
+//header styles
+
+.left-icon {
+
+}
+
+.right-menu {
+  color: $bluegray;
+}
+
+menu > .menu-links {
+  list-style-type: none;
+}
+
+.menu-links > a:link, .menu-links > a:visited, .menu-links > a:hover, .menu-links > a:active, .menu-links > a:focus {
+  background: $navy;
+  color: white;
+  position: relative;
+  display: block;
+  text: {
+    transform: uppercase;
+    decoration: none;
+  }
+}
+
+.footer-section {
+  display: block;
+}
+
+.footer-top {
+  display: block;
+  background-color: $midgray;
+  color: black;
+  z-index: 15;
+  position: relative;
+}
