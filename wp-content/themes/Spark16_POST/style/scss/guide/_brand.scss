@@ -145,7 +145,7 @@ $close: url(#{$image-path}close/white.png);
   border: 2px solid $bluegray;
   padding: 2px;
   &:hover {
-    width: 120%;
+    background-size: 120%;
     @include alpha-attribute('background-color', rgba(black, 0.4), white);
   }
 }
