@@ -6,13 +6,277 @@
 
 $image-path: 'style/scss/guide/image/';
 
-// Variables
-/// Colors 
-$text: black;
+// VARIABLES
+
+// font-weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Colors //
+
+//greens
+$lightgreen: #C3DD8E;
+$darkgreen: #90BF82;
+$verylightgreen: #E2F9CF;
+
+//blues
+$navy: #061F32;
+$darkestblue: #01558C;
+$middleblue: #0D7DBA;
+$lightblue: #8EC7E5;
+
+//grays
+$bluegray: #CDD9E6;
+$darkergray: #5B7490;
+$midgray: #ADB4BF;
+
+//oranges
+$darkorange: #DE7426;
+$lightorange: #F29620;
+
+//white
+$offwhite: #F0F5F6;
+
 
 /// FA Icons
 $menu: "\f0c9";
+$double-arrow-left: "\f100";
+$double-arrow-right: "\f101";
+$right-nav-arrow: "\f105";
+$left-nav-arrow: "\f104";
+$up-nav-arrow: "\f106";
+$down-nav-arrow: "\f107";
 
 /// IMG Icons
 $close: url(#{$image-path}close/white.png);
 
+// Mixins
+
+@mixin h1-style ($color) {
+  color: $color;
+  font-size: $h1; 
+  font-family: $bebas-book;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+@mixin h2-style ($color) {
+  color: $color;  
+  font-size: $h2;
+  font-weight: $light;
+  font-family: $bebas-light;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+@mixin h3-style ($color) {
+  color: $color;
+  font-size: $h3;
+  font-family: $bebas-bold;
+  text-transform: capitalize;
+}
+
+@mixin h4-style ($color) {
+  color: $color;
+  font-size: $h4;
+  font-family: $bebas-bold;
+  text-transform: uppercase;
+}
+
+@mixin h5-style ($color) {
+  color: $color;
+  font-size: $h5;
+  font-family: $frutiger-light;
+  letter-spacing: 1px;
+}
+
+@mixin p-style ($color) {
+  color: $color;
+  font-size: $p_tag;
+  font-family: $frutiger-light;
+}
+
+@mixin blockquote {
+  color: $midgray;
+  font-size: $blockquote;
+  font-family: $frutiger-light;
+}
+
+@mixin caption {
+  color: $midgray;
+  font-size: $caption;
+  font-family: $frutiger-italic;
+}
+
+@mixin text-link {
+  font-size: $p_tag;
+  font-family: $frutiger-light;
+  text-decoration: none;
+  color: $middleblue;
+  &:after {
+    content: "\f105";
+    font-family: "FontAwesome"; 
+    color: $middleblue;
+    font-size: 105%;
+    position: relative;
+    padding-left: 5px;
+  }
+}
+
+@mixin image-caption {
+  text-transform: none;
+  font: {
+    family: $frutiger-light;
+    size: 10px;
+    style: italic;
+  }
+}
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+@mixin zoom-background-image {
+  width: 100%;
+  height: auto;
+  border: 2px solid $bluegray;
+  padding: 2px;
+  &:hover {
+    width: 120%;
+    @include alpha-attribute('background-color', rgba(black, 0.4), white);
+  }
+}
+
+@mixin image-border {
+  border: 1px solid $bluegray;
+  padding: 3px;
+}
+
+@mixin inner-border {
+  box-shadow: inset 0 0 0 2px $offwhite;
+}
+
+
+@mixin circle-image {
+  @include image-border;
+  @include inner-border;
+  border-radius: 50%;
+  height: 145px;
+  width: 145px;
+}
+
+@mixin rsvp-button {
+  border-radius: 2px;
+  padding-top: 7px;
+  font-family: "$myriad-pro";
+  width: 203px;
+  height: 45px;
+  color: $middleblue;
+  border: 2px dashed $lightblue;
+  background: transparent;
+  &:hover {
+    background-color: $lightblue;
+    color: $offwhite;
+  }
+}
+%direction-button {
+  height: 56px;
+  width: 48px;
+  background-color: $navy;
+  opacity: 0.5;
+  &:hover {
+    background-color: $middleblue;
+  }
+}
+@mixin right-arrow-button {
+  @extend %direction-button;
+  background-image: url('../../../social/RightArrow_Chevron.png');
+    &:after {
+    content: "\f101";
+    font-family: "FontAwesome"; 
+    color: $offwhite;
+    font-size: 108%;
+    position: relative;
+    padding-left: 7px;
+    }
+}
+
+@mixin left-arrow-button {
+  @extend %direction-button;
+  background-image: url('../../../social/LeftArrow_Chevron.png');
+  &:after {
+    content: "\f100";
+    font-family: "FontAwesome";
+    color: $offwhite;
+    font-size: 108%;
+    position: relative;
+    padding-left: 7px;
+  }
+}
+
+%button {
+  padding-top: 7px;
+  width: 130px;
+  height: 35px;
+  font-family: $bebas-regular;
+  font-size: $button;
+  text-transform: uppercase;
+  color: $offwhite;
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+@mixin button-dashed {
+  @extend %button;
+  border: 2px dashed $lightorange;
+  background-color: transparent;
+  &:hover {
+    background-color: $lightorange;
+  }
+}
+
+@mixin button-solid {
+  @extend %button;
+  border: none;
+  background-color: $lightorange;
+  &:hover {
+    background-color: $darkorange; 
+  }
+}
+
+@mixin hero-image {
+  @include background-image;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 553px;
+  margin: 0 auto;
+  text-align: center;
+}
+@mixin background-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin tab {
+  width: span(4);
+  border: 1px dashed $middleblue;
+  font-family: $bebas-regular;
+  font-size: $h2;
+  color: $middleblue;
+  background-color: white;
+  border-radius: 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  &:hover {
+    background-color: $middleblue;
+    color: white;
+  }
+}

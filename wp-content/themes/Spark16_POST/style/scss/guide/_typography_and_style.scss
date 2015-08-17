@@ -1,36 +1,68 @@
 //Typography
-body {
-	@include Body;
+// body {
+// 	@include Body;
 
-	p { @include Paragraph; }
-	h1{ @include Header1; }
-	h2{ @include Header2; }
-	h3{ @include Header3; }
-	h4{ @include Header4; }
-	h5{ @include Header5; }
-	h6{ @include Header6; }
-	blockquote { @include Quote; }
+// 	p { @include Paragraph; }
+// 	h1{ @include Header1; }
+// 	h2{ @include Header2; }
+// 	h3{ @include Header3; }
+// 	h4{ @include Header4; }
+// 	h5{ @include Header5; }
+// 	h6{ @include Header6; }
+// 	blockquote { @include Quote; }
+// }
+
+// Font Sizes
+$h1: 3em;  /*48px/16px*/
+$h2: 2em;  /*32px/16px*/
+$h3: 1.5em;   /*24px/16px*/
+$h4: 1.25em;  /*20px/16px*/
+$h5: 1em;  /*16px/16px*/
+$p_tag: 0.875em; /*14px/16px*/
+$caption: 0.75em;   /*12px/16px/*/
+
+$blockquote: 1.25em;  /*20px/16px*/
+$button: 1.25em;  /*20px/16px*/
+
+// $base-font-size: 16px;
+// $base-line-height: 1.3;
+
+// Font Families
+$bebas-regular: "BebasNeue Regular", sans-serif;
+$bebas-light: "BebasNeue Light", sans-serif;
+$bebas-book: "BebasNeue Book", sans-serif;
+$bebas-bold: "BebasNeue Bold", sans-serif;
+$frutiger-light: 'Frutiger Light', sans-serif;
+$frutiger-bold: 'Frutiger 67 Bold Condensed', sans-serif;
+$frutiger-italic: 'FrutigerCE Light Italic', sans-serif;
+$myriad-reg: 'Myriad Pro Regular,' sans-serif;
+
+// @font-face {
+//   font-family: "Frutiger LT 57 Cn";
+//   src: url(style/scss/guide/fonts/Frutiger_LT_57_Condensed.ttf);
+// }
+@font-face {
+  font-family: "Frutiger 67 Bold Condensed";
+  src: url(style/scss/guide/fonts/frutiger-boldcn-webfont.ttf);
 }
-a { 
-	&:link, &:visited { 
-		text-decoration: none;  
-		color: $green;
-	}
+@font-face {
+  font-family: "Frutiger Light";
+  src: url(style/scss/guide/fonts/frutigel-webfont.ttf);
+}
+@font-face {
+  font-family: "FrutigerCE Light Italic";
+  src: url(style/scss/guide/fonts/FrutigerCE_LightItalic.ttf);
+}
+@font-face {
+  font-family: "BebasNeue Light";
+  src: url(style/scss/guide/fonts/BebasNeue_Light.otf);
 }
 
-//Section Backgrounds
-.wrap {
-	&:not(.no-padding){
-		padding: 40px 0;
-	}
-	&.white {
-		background: white;
-	}
-	&.seagreen {
-		background: $seagreen;
-	}	
-	&.lightgray, &.gray {
-		background: $backgroundgray;
-		border-top: 1px solid $lightgray;
-	}
+@font-face {
+  font-family: "BebasNeue Regular";
+  src: url(style/scss/guide/fonts/BebasNeue_Regular.ttf);
+}
+@font-face {
+  font-family: "BebasNeue Book";
+  src: url(style/scss/guide/fonts/BebasNeue_Book.ttf);
 }
