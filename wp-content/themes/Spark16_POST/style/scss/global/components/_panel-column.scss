@@ -1,0 +1,60 @@
+.panels{
+	.panel-frame {
+		@include span(5);
+		@include display-flex;
+		@include flex-direction(column);
+		height: 100vh;
+		.panel-group{
+			@include flex(200 80px);
+			div[class*="-panel"]{
+				width: 100%;
+				min-height: 100vw;
+				border-right: 1px solid gray;
+				@include flex(1);
+				.heading {
+					display: absolute;
+					width: 100%;
+					height: 200px;
+					text-align: center;
+					@include display-flex;
+					@include align-items(center);
+					@include flex-direction(row);
+
+					//TEMP
+					background: #f8f8f8;
+					.heading-text {
+						display: inline-block;
+						margin: auto;
+					}
+				}
+				.content {
+					padding: gutter();
+					line-height: 1.25em;
+					nav {
+						ul {
+							padding: 0;
+							li {
+								list-style-type: none;
+								padding: 10px 0;
+								& > * { 
+									display: inline-block; 
+									vertical-align: middle;
+								}
+								.nav-icon {
+									display: inline-block;
+									width: 40px;
+									height: 40px;
+									padding-right: 10px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.panel-nav {
+			@include flex (1 1 80px);
+			background: $darkestblue;
+		}
+	}
+}
